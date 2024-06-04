@@ -2,6 +2,8 @@
 
 
 #include "SideScroll/SideScrollCharacter.h"
+#include "GameFramework/SpringArmComponent.h"
+
 
 // Sets default values
 ASideScrollCharacter::ASideScrollCharacter()
@@ -9,8 +11,7 @@ ASideScrollCharacter::ASideScrollCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	
-
+	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SSSpringArm"));
 }
 
 // Called when the game starts or when spawned
