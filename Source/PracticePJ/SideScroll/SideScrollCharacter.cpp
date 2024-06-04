@@ -3,6 +3,8 @@
 
 #include "SideScroll/SideScrollCharacter.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 
 
 // Sets default values
@@ -12,6 +14,16 @@ ASideScrollCharacter::ASideScrollCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SSSpringArm"));
+	SpringArm->SetupAttachment(GetRootComponent());
+
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("SSCamera"));
+	Camera->SetupAttachment(SpringArm);
+
+
+	FQuat Quat = FQuat();
+
+	UKismetMathLibrary::Quat_SetFromEuler(Quat, FVector(0.0f, 0.0f, -90.0f));
+	SpringArm->SetRelativeRotation(Quat);
 }
 
 // Called when the game starts or when spawned
