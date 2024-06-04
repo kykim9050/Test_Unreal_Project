@@ -23,9 +23,10 @@ ASideScrollCharacter::ASideScrollCharacter()
 	Camera->SetOrthoWidth(1280.0f * 2);
 
 	FQuat Quat = FQuat();
-
 	UKismetMathLibrary::Quat_SetFromEuler(Quat, FVector(0.0f, 0.0f, -90.0f));
 	SpringArm->SetRelativeRotation(Quat);
+	
+	//SpringArm->bDoCollisionTest = false;
 }
 
 // Called when the game starts or when spawned
