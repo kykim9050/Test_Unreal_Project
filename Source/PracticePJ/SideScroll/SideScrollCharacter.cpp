@@ -5,6 +5,8 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "GameFramework/PlayerInput.h"
+#include "Components/InputComponent.h"
 
 
 // Sets default values
@@ -43,10 +45,26 @@ void ASideScrollCharacter::Tick(float DeltaTime)
 
 }
 
-// Called to bind functionality to input
 void ASideScrollCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	check(PlayerInputComponent);
+
+	UPlayerInput::AddEngineDefinedAxisMapping(FInputAxisKeyMapping("DefaultPawn_Speed", EKeys::A, -1.f));
+	UPlayerInput::AddEngineDefinedAxisMapping(FInputAxisKeyMapping("DefaultPawn_Speed", EKeys::D, 1.f));
+
+	//UPlayerInput::AddEngineDefinedActionMapping(FInputActionKeyMapping("DefaultPawn_Jump", EKeys::SpaceBar));
+
+	PlayerInputComponent->BindAxis("DefaultPawn_Speed", this, &ASideScrollCharacter::SpeedChange);
+
+	//PlayerInputComponent->BindAction("DefaultPawn_Jump", EInputEvent::IE_Pressed, this, &ASideScrollCharacter::PlayerJump);
 }
 
+void ASideScrollCharacter::SpeedChange(float _Value)
+{
+	if (_Value != 0)
+	{
+		AddMovementInput(FVector(1.0f, 0.0f, 0.0f), _Value);
+	}
+}
