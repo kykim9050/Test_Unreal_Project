@@ -19,6 +19,8 @@ ASideScrollCharacter::ASideScrollCharacter()
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("SSCamera"));
 	Camera->SetupAttachment(SpringArm);
 
+	Camera->ProjectionMode = ECameraProjectionMode::Orthographic;
+	Camera->SetOrthoWidth(1280.0f * 2);
 
 	FQuat Quat = FQuat();
 
