@@ -54,11 +54,10 @@ void ASideScrollCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 	UPlayerInput::AddEngineDefinedAxisMapping(FInputAxisKeyMapping("DefaultPawn_Speed", EKeys::A, -1.f));
 	UPlayerInput::AddEngineDefinedAxisMapping(FInputAxisKeyMapping("DefaultPawn_Speed", EKeys::D, 1.f));
 
-	//UPlayerInput::AddEngineDefinedActionMapping(FInputActionKeyMapping("DefaultPawn_Jump", EKeys::SpaceBar));
+	UPlayerInput::AddEngineDefinedActionMapping(FInputActionKeyMapping("DefaultPawn_Jump", EKeys::SpaceBar));
 
 	PlayerInputComponent->BindAxis("DefaultPawn_Speed", this, &ASideScrollCharacter::SpeedChange);
-
-	//PlayerInputComponent->BindAction("DefaultPawn_Jump", EInputEvent::IE_Pressed, this, &ASideScrollCharacter::PlayerJump);
+	PlayerInputComponent->BindAction("DefaultPawn_Jump", EInputEvent::IE_Pressed, this, &ASideScrollCharacter::PlayerJump);
 }
 
 void ASideScrollCharacter::SpeedChange(float _Value)
@@ -67,4 +66,9 @@ void ASideScrollCharacter::SpeedChange(float _Value)
 	{
 		AddMovementInput(FVector(1.0f, 0.0f, 0.0f), _Value);
 	}
+}
+
+void ASideScrollCharacter::PlayerJump()
+{
+	Jump();
 }

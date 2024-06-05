@@ -37,4 +37,6 @@ private:
 	class UCameraComponent* Camera = nullptr;
 
 	void SpeedChange(float _Value);
+	void PlayerJump();
+
 };
