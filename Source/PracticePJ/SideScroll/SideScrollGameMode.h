@@ -14,7 +14,5 @@ class PRACTICEPJ_API ASideScrollGameMode : public AGameMode
 {
 	GENERATED_BODY()
 	
-private:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowprivateAccess = "true"))
-	UDataTable* ActorDataTable = nullptr;
+
 };

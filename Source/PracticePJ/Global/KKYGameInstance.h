@@ -14,4 +14,7 @@ class PRACTICEPJ_API UKKYGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 	
+private:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowprivateAccess = "true"))
+	UDataTable* ActorDataTable = nullptr;
 };
