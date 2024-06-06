@@ -18,7 +18,7 @@ struct FSideScrollPlayerData : public FTableRowBase
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Parameter")
-	float PlayerSpeed = 500.0f;
+	float PlayerSpeed = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameter")
 	float PlayerJump = 1000.0f;

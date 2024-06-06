@@ -43,8 +43,12 @@ void ASideScrollCharacter::BeginPlay()
 
 	if (nullptr == Inst)
 	{
-		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == MonsterDataTable)"), __FUNCTION__, __LINE__);
+		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == Inst)"), __FUNCTION__, __LINE__);
 	}
+
+	SideScrollData = Inst->GetSideScrollData();
+	FSideScrollPlayerData PlayerData = SideScrollData->PlayerData;
+
 
 }
 
@@ -74,7 +78,7 @@ void ASideScrollCharacter::SpeedChange(float _Value)
 {
 	if (_Value != 0)
 	{
-		AddMovementInput(FVector(1.0f, 0.0f, 0.0f), _Value);
+		AddMovementInput(FVector(PlayerSpeed, 0.0f, 0.0f), _Value);
 	}
 }
 

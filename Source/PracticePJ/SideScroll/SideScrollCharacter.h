@@ -37,7 +37,10 @@ private:
 	UPROPERTY(Category = "Contents", VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* Camera = nullptr;
 
-	const FSideScrollGameSettingRow SideScrollData = FSideScrollGameSettingRow();
+	const FSideScrollGameSettingRow* SideScrollData = nullptr;
+
+	float PlayerSpeed = 0.0f;
+
 
 	void SpeedChange(float _Value);
 	void PlayerJump();
