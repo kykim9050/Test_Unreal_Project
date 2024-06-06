@@ -13,8 +13,15 @@ UCLASS()
 class PRACTICEPJ_API UKKYGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
-	
+public:
+
+protected:
+
+
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowprivateAccess = "true"))
 	UDataTable* ActorDataTable = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowprivateAccess = "true"))
+	UDataTable* SideScrollData = nullptr;
 };

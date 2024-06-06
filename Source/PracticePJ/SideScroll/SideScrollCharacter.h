@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Global/DataTable/SideScrollGameSettingRow.h"
 #include "SideScrollCharacter.generated.h"
 
 UCLASS()
@@ -36,7 +37,10 @@ private:
 	UPROPERTY(Category = "Contents", VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* Camera = nullptr;
 
+	const FSideScrollGameSettingRow SideScrollData = FSideScrollGameSettingRow();
+
 	void SpeedChange(float _Value);
 	void PlayerJump();
+
 
 };

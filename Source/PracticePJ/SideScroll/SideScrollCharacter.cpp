@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "GameFramework/PlayerInput.h"
+#include "Global/KKYGameInstance.h"
 #include "Components/InputComponent.h"
 
 
@@ -29,13 +30,22 @@ ASideScrollCharacter::ASideScrollCharacter()
 	SpringArm->SetRelativeRotation(Quat);
 	
 	//SpringArm->bDoCollisionTest = false;
+
 }
 
 // Called when the game starts or when spawned
 void ASideScrollCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	// GameInstance & DataTable
+	UKKYGameInstance* Inst = GetWorld()->GetGameInstanceChecked<UKKYGameInstance>();
+
+	if (nullptr == Inst)
+	{
+		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == MonsterDataTable)"), __FUNCTION__, __LINE__);
+	}
+
 }
 
 // Called every frame
