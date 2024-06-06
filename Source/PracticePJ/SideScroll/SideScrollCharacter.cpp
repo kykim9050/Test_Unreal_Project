@@ -8,6 +8,7 @@
 #include "GameFramework/PlayerInput.h"
 #include "Global/KKYGameInstance.h"
 #include "Components/InputComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 
 // Sets default values
@@ -48,14 +49,19 @@ void ASideScrollCharacter::BeginPlay()
 
 	SideScrollData = Inst->GetSideScrollData();
 	FSideScrollPlayerData PlayerData = SideScrollData->PlayerData;
+	PlayerSpeed = PlayerData.PlayerSpeed;
 
-
+	GetCharacterMovement()->GravityScale = PlayerData.GravityScale;
+	GetCharacterMovement()->JumpZVelocity = PlayerData.JumpZVelocity;
+	
 }
 
 // Called every frame
 void ASideScrollCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	AddActorLocalOffset(FVector(1.0f, 0.0f, 0.0f) * PlayerSpeed * DeltaTime);
 
 }
 
@@ -78,7 +84,7 @@ void ASideScrollCharacter::SpeedChange(float _Value)
 {
 	if (_Value != 0)
 	{
-		AddMovementInput(FVector(PlayerSpeed, 0.0f, 0.0f), _Value);
+		AddMovementInput(FVector(1.0f, 0.0f, 0.0f), _Value);
 	}
 }
 

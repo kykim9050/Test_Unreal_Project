@@ -21,10 +21,10 @@ public:
 	float PlayerSpeed = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameter")
-	float PlayerJump = 1000.0f;
+	float JumpZVelocity = 1000.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameter")
-	float PlayerGravityRatio = 1.0f;
+	float GravityScale = 1.0f;
 };
 
 
