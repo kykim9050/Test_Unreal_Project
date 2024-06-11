@@ -48,9 +48,6 @@ void ASideScrollCharacter::BeginPlay()
 	SideScrollData = Inst->GetSideScrollData();
 	FSideScrollPlayerData PlayerData = SideScrollData->PlayerData;
 	PlayerSpeed = PlayerData.PlayerSpeed;
-
-	GetCharacterMovement()->GravityScale = PlayerData.GravityScale;
-	GetCharacterMovement()->JumpZVelocity = PlayerData.JumpZVelocity;
 	
 }
 
@@ -61,13 +58,6 @@ void ASideScrollCharacter::Tick(float DeltaTime)
 
 	AddActorLocalOffset(FVector(1.0f, 0.0f, 0.0f) * PlayerSpeed * DeltaTime);
 
-}
-
-void ASideScrollCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-	check(PlayerInputComponent);
 }
 
 void ASideScrollCharacter::PlayerJump()
