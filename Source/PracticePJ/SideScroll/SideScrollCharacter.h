@@ -16,6 +16,9 @@ public:
 	// Sets default values for this character's properties
 	ASideScrollCharacter();
 
+	UFUNCTION(BlueprintCallable)
+	void BackMove(float _DeltaTime);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

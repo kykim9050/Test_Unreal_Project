@@ -8,6 +8,7 @@
 #include "GameFramework/PlayerInput.h"
 #include "Global/KKYGameInstance.h"
 #include "Components/InputComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 
@@ -63,4 +64,16 @@ void ASideScrollCharacter::Tick(float DeltaTime)
 void ASideScrollCharacter::PlayerJump()
 {
 	Jump();
+}
+
+void ASideScrollCharacter::BackMove(float _DeltaTime)
+{
+	UCapsuleComponent* GainCollisionPtr = FindComponentByTag<UCapsuleComponent>(TEXT("Gain"));
+
+	if (nullptr == GainCollisionPtr)
+	{
+		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == GainCollisionPtr)"), __FUNCTION__, __LINE__);
+	}
+
+	GetMesh()->AddRelativeLocation(FVector(-1.0f, 0.0f, 0.0f) * _DeltaTime * PlayerSpeed);
 }
