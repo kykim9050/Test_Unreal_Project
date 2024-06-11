@@ -25,6 +25,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameter")
 	float GravityScale = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameter")
+	float FrontMax = 100.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameter")
+	float BackMax = -100.0f;
 };
 
 

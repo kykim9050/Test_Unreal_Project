@@ -19,6 +19,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void BackMove(float _DeltaTime);
 
+	UFUNCTION(BlueprintCallable)
+	void FrontMove(float _DeltaTime);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -36,11 +39,16 @@ private:
 	UPROPERTY(Category = "Contents", VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* Camera = nullptr;
 
-	const FSideScrollGameSettingRow* SideScrollData = nullptr;
+	UPROPERTY(Category = "Contents", VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UCapsuleComponent* GainCollisionPtr = nullptr;
+
+	FSideScrollPlayerData PlayerData;
 
 	float PlayerSpeed = 0.0f;
 
 	void PlayerJump();
+
+
 
 
 };

@@ -46,10 +46,15 @@ void ASideScrollCharacter::BeginPlay()
 		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == Inst)"), __FUNCTION__, __LINE__);
 	}
 
-	SideScrollData = Inst->GetSideScrollData();
-	FSideScrollPlayerData PlayerData = SideScrollData->PlayerData;
+	GainCollisionPtr = FindComponentByTag<UCapsuleComponent>(TEXT("Gain"));
+
+	if (nullptr == GainCollisionPtr)
+	{
+		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == GainCollisionPtr)"), __FUNCTION__, __LINE__);
+	}
+
+	PlayerData = Inst->GetSideScrollData()->PlayerData;
 	PlayerSpeed = PlayerData.PlayerSpeed;
-	
 }
 
 // Called every frame
@@ -68,12 +73,30 @@ void ASideScrollCharacter::PlayerJump()
 
 void ASideScrollCharacter::BackMove(float _DeltaTime)
 {
-	UCapsuleComponent* GainCollisionPtr = FindComponentByTag<UCapsuleComponent>(TEXT("Gain"));
-
-	if (nullptr == GainCollisionPtr)
-	{
-		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == GainCollisionPtr)"), __FUNCTION__, __LINE__);
-	}
-
 	GetMesh()->AddRelativeLocation(FVector(-1.0f, 0.0f, 0.0f) * _DeltaTime * PlayerSpeed);
+
+	FVector MeshPos = GetMesh()->GetRelativeLocation();
+
+	//if (PlayerData.BackMax >= MeshPos.X)
+	//{
+	//	MeshPos.X = PlayerData.BackMax;
+	//}
+
+	MeshPos.Z += GainCollisionPtr->GetScaledCapsuleHalfHeight();
+	GainCollisionPtr->SetRelativeLocation(MeshPos);
+}
+
+void ASideScrollCharacter::FrontMove(float _DeltaTime)
+{
+	GetMesh()->AddRelativeLocation(FVector(1.0f, 0.0f, 0.0f) * _DeltaTime * PlayerSpeed);
+
+	FVector MeshPos = GetMesh()->GetRelativeLocation();
+	
+	//if (PlayerData.FrontMax <= MeshPos.X)
+	//{
+	//	MeshPos.X = PlayerData.BackMax;
+	//}
+
+	MeshPos.Z += GainCollisionPtr->GetScaledCapsuleHalfHeight();
+	GainCollisionPtr->SetRelativeLocation(MeshPos);
 }
