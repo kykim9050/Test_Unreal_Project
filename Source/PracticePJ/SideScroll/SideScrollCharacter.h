@@ -22,9 +22,24 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void FrontMove(float _DeltaTime);
 
+	UFUNCTION(BlueprintCallable)
+	void ViewCharacterJump();
+
+	UFUNCTION(BlueprintCallable)
+	void PlayerOverlapBegin(UCapsuleComponent* Capsule, AActor* _CollisionActor);
+
+	UFUNCTION(BlueprintCallable)
+	void PlayerOverlapEnd(AActor* _CollisionActor);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	void ViewJump(float _DeltaTime);
+	void ViewGravity(float _DeltaTime);
+
+	void SetViewChracterPos(FVector _Pos);
+	void AddViewChracterPos(FVector _Dir);
 
 
 public:	
@@ -48,7 +63,13 @@ private:
 
 	void PlayerJump();
 
+	float GravityPower;
 
+	float JumpPower;
+	float CurJumpPower;
+
+	bool IsGroundValue = true;
+	bool IsJumpValue = false;
 
 
 };

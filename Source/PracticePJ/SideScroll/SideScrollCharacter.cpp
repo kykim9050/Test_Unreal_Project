@@ -64,6 +64,15 @@ void ASideScrollCharacter::Tick(float DeltaTime)
 
 	AddActorLocalOffset(FVector(1.0f, 0.0f, 0.0f) * PlayerSpeed * DeltaTime);
 
+	if (true == IsJumpValue)
+	{
+		ViewJump(DeltaTime);
+	}
+
+	if (false == IsGroundValue && false == IsJumpValue)
+	{
+		ViewGravity(DeltaTime);
+	}
 }
 
 void ASideScrollCharacter::PlayerJump()
@@ -102,4 +111,82 @@ void ASideScrollCharacter::FrontMove(float _DeltaTime)
 	GetMesh()->SetRelativeLocation(MeshPos);
 	MeshPos.Z += GainCollisionPtr->GetScaledCapsuleHalfHeight();
 	GainCollisionPtr->SetRelativeLocation(MeshPos);
+}
+
+
+
+void ASideScrollCharacter::PlayerOverlapBegin(UCapsuleComponent* Capsule, AActor* _CollisionActor)
+{
+	if (true == _CollisionActor->ActorHasTag(TEXT("Coin")))
+	{
+		_CollisionActor->Destroy();
+	}
+
+	if (true == _CollisionActor->ActorHasTag(TEXT("Ground")))
+	{
+		// 매쉬 컴포넌트를 찾는방법
+		UStaticMeshComponent* Ptr = _CollisionActor->GetComponentByClass<UStaticMeshComponent>();
+
+		if (nullptr == Ptr)
+		{
+			UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == Cap)"), __FUNCTION__, __LINE__);
+		}
+
+		FBoxSphereBounds Bound = Ptr->Bounds;
+		FVector Pos = _CollisionActor->GetActorLocation();
+
+		JumpPower = 0.0f;
+		GravityPower = 0.0f;
+		FVector MeshPos = GetMesh()->GetRelativeLocation();
+		MeshPos.Z = Pos.Z + Bound.BoxExtent.Z;
+		SetViewChracterPos(MeshPos);
+		IsGroundValue = true;
+		IsJumpValue = false;
+	}
+}
+
+void ASideScrollCharacter::PlayerOverlapEnd(AActor* _CollisionActor)
+{
+	if (true == _CollisionActor->ActorHasTag(TEXT("Ground")))
+	{
+		IsGroundValue = false;
+	}
+}
+
+void ASideScrollCharacter::ViewCharacterJump()
+{
+	if (true == IsGroundValue)
+	{
+		IsJumpValue = true;
+		GravityPower = 0.0f;
+		JumpPower = PlayerData.JumpZVelocity;
+		SetViewChracterPos(GetMesh()->GetRelativeLocation() + FVector(0.0f, 0.0f, 1.0f));
+	}
+}
+
+void ASideScrollCharacter::ViewJump(float _DeltaTime)
+{
+	GravityPower += PlayerData.GravityAccSpeed * _DeltaTime;
+	CurJumpPower = JumpPower + GravityPower;
+
+	AddViewChracterPos(FVector(0.0f, 0.0f, CurJumpPower) * _DeltaTime);
+}
+
+void ASideScrollCharacter::ViewGravity(float _DeltaTime)
+{
+	GravityPower += PlayerData.GravityAccSpeed * _DeltaTime;
+	AddViewChracterPos(FVector(0.0f, 0.0f, GravityPower));
+}
+
+void ASideScrollCharacter::SetViewChracterPos(FVector _Pos)
+{
+	GetMesh()->SetRelativeLocation(_Pos);
+	_Pos.Z += GainCollisionPtr->GetScaledCapsuleHalfHeight();
+	GainCollisionPtr->SetRelativeLocation(_Pos);
+}
+
+void ASideScrollCharacter::AddViewChracterPos(FVector _Dir)
+{
+	GetMesh()->AddRelativeLocation(_Dir);
+	GainCollisionPtr->AddRelativeLocation(_Dir);
 }

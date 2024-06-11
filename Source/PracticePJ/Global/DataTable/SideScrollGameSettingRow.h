@@ -31,6 +31,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameter")
 	float BackMax = -100.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameter")
+	float GravityAccSpeed = -500.0f;
 };
 
 
