@@ -41,8 +41,6 @@ private:
 
 	float PlayerSpeed = 0.0f;
 
-
-	void SpeedChange(float _Value);
 	void PlayerJump();
 
 

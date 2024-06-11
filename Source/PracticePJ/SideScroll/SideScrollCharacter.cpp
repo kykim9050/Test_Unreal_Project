@@ -29,8 +29,6 @@ ASideScrollCharacter::ASideScrollCharacter()
 	FQuat Quat = FQuat();
 	UKismetMathLibrary::Quat_SetFromEuler(Quat, FVector(0.0f, 0.0f, -90.0f));
 	SpringArm->SetRelativeRotation(Quat);
-	
-	//SpringArm->bDoCollisionTest = false;
 
 }
 
@@ -70,22 +68,6 @@ void ASideScrollCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	check(PlayerInputComponent);
-
-	//UPlayerInput::AddEngineDefinedAxisMapping(FInputAxisKeyMapping("DefaultPawn_Speed", EKeys::A, -1.f));
-	//UPlayerInput::AddEngineDefinedAxisMapping(FInputAxisKeyMapping("DefaultPawn_Speed", EKeys::D, 1.f));
-
-	//UPlayerInput::AddEngineDefinedActionMapping(FInputActionKeyMapping("DefaultPawn_Jump", EKeys::SpaceBar));
-
-	//PlayerInputComponent->BindAxis("DefaultPawn_Speed", this, &ASideScrollCharacter::SpeedChange);
-	//PlayerInputComponent->BindAction("DefaultPawn_Jump", EInputEvent::IE_Pressed, this, &ASideScrollCharacter::PlayerJump);
-}
-
-void ASideScrollCharacter::SpeedChange(float _Value)
-{
-	if (_Value != 0)
-	{
-		AddMovementInput(FVector(1.0f, 0.0f, 0.0f), _Value);
-	}
 }
 
 void ASideScrollCharacter::PlayerJump()
