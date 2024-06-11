@@ -77,11 +77,13 @@ void ASideScrollCharacter::BackMove(float _DeltaTime)
 
 	FVector MeshPos = GetMesh()->GetRelativeLocation();
 
-	//if (PlayerData.BackMax >= MeshPos.X)
-	//{
-	//	MeshPos.X = PlayerData.BackMax;
-	//}
+	if (PlayerData.BackMax >= MeshPos.X)
+	{
+		MeshPos.X = PlayerData.BackMax;
+	}
 
+
+	GetMesh()->SetRelativeLocation(MeshPos);
 	MeshPos.Z += GainCollisionPtr->GetScaledCapsuleHalfHeight();
 	GainCollisionPtr->SetRelativeLocation(MeshPos);
 }
@@ -92,11 +94,12 @@ void ASideScrollCharacter::FrontMove(float _DeltaTime)
 
 	FVector MeshPos = GetMesh()->GetRelativeLocation();
 	
-	//if (PlayerData.FrontMax <= MeshPos.X)
-	//{
-	//	MeshPos.X = PlayerData.BackMax;
-	//}
+	if (PlayerData.FrontMax <= MeshPos.X)
+	{
+		MeshPos.X = PlayerData.FrontMax;
+	}
 
+	GetMesh()->SetRelativeLocation(MeshPos);
 	MeshPos.Z += GainCollisionPtr->GetScaledCapsuleHalfHeight();
 	GainCollisionPtr->SetRelativeLocation(MeshPos);
 }
