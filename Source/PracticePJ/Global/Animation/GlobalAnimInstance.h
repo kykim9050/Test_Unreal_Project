@@ -14,7 +14,15 @@ class PRACTICEPJ_API UGlobalAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
 
+public:
+	void ChangeAnimation(FString _AniName);
+
+protected:
+
 private:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	uint8 AniKey;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	//uint8 AniKey;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	TMap<FString, class UAnimMontage*> AnimMontages;
 };

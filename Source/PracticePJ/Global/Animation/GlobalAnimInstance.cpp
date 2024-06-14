@@ -3,3 +3,7 @@
 
 #include "Global/Animation/GlobalAnimInstance.h"
 
+void UGlobalAnimInstance::ChangeAnimation(FString _AniName)
+{
+	
+}
