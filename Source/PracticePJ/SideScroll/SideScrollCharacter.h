@@ -59,6 +59,9 @@ private:
 
 	FSideScrollPlayerData PlayerData;
 
+	UPROPERTY(Category = "Contents", VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	class UGlobalAnimInstance* AnimInst;
+
 	float PlayerSpeed = 0.0f;
 
 	void PlayerJump();

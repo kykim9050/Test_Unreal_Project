@@ -15,7 +15,7 @@ class PRACTICEPJ_API UGlobalAnimInstance : public UAnimInstance
 	GENERATED_BODY()
 
 public:
-	void ChangeAnimation(FString _AniName);
+	void ChangeAnimation(const FString& _AniName);
 
 protected:
 

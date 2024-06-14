@@ -10,6 +10,7 @@
 #include "Components/InputComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Global/Animation/GlobalAnimInstance.h"
 
 
 // Sets default values
@@ -55,6 +56,10 @@ void ASideScrollCharacter::BeginPlay()
 
 	PlayerData = Inst->GetSideScrollData()->PlayerData;
 	PlayerSpeed = PlayerData.PlayerSpeed;
+
+	
+	AnimInst = Cast<UGlobalAnimInstance>(GetMesh()->GetAnimInstance());
+	AnimInst->ChangeAnimation(TEXT("Run"));
 }
 
 // Called every frame
@@ -77,6 +82,8 @@ void ASideScrollCharacter::Tick(float DeltaTime)
 
 void ASideScrollCharacter::PlayerJump()
 {
+	AnimInst->ChangeAnimation(TEXT("Jump"));
+
 	Jump();
 }
 
