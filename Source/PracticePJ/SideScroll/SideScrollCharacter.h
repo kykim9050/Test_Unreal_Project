@@ -5,10 +5,12 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Global/DataTable/SideScrollGameSettingRow.h"
+#include "Global/GlobalCharacter.h"
 #include "SideScrollCharacter.generated.h"
 
+
 UCLASS()
-class PRACTICEPJ_API ASideScrollCharacter : public ACharacter
+class PRACTICEPJ_API ASideScrollCharacter : public AGlobalCharacter
 {
 	GENERATED_BODY()
 
@@ -59,12 +61,7 @@ private:
 
 	FSideScrollPlayerData PlayerData;
 
-	UPROPERTY(Category = "Contents", VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	class UGlobalAnimInstance* AnimInst;
-
 	float PlayerSpeed = 0.0f;
-
-	void PlayerJump();
 
 	float GravityPower;
 

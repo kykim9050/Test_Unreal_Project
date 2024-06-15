@@ -57,9 +57,8 @@ void ASideScrollCharacter::BeginPlay()
 	PlayerData = Inst->GetSideScrollData()->PlayerData;
 	PlayerSpeed = PlayerData.PlayerSpeed;
 
-	
-	AnimInst = Cast<UGlobalAnimInstance>(GetMesh()->GetAnimInstance());
-	AnimInst->ChangeAnimation(TEXT("Run"));
+
+	GetAnimationContext()->ChangeAnimation(TEXT("Run"));
 }
 
 // Called every frame
@@ -78,13 +77,6 @@ void ASideScrollCharacter::Tick(float DeltaTime)
 	{
 		ViewGravity(DeltaTime);
 	}
-}
-
-void ASideScrollCharacter::PlayerJump()
-{
-	AnimInst->ChangeAnimation(TEXT("Jump"));
-
-	Jump();
 }
 
 void ASideScrollCharacter::BackMove(float _DeltaTime)
@@ -164,6 +156,7 @@ void ASideScrollCharacter::ViewCharacterJump()
 {
 	if (true == IsGroundValue)
 	{
+		GetAnimationContext()->ChangeAnimation(TEXT("Jump"));
 		IsJumpValue = true;
 		GravityPower = 0.0f;
 		JumpPower = PlayerData.JumpZVelocity;
