@@ -15,6 +15,21 @@ public:
 	// Sets default values for this character's properties
 	AFPSCharacter();
 
+	UFUNCTION(BlueprintCallable)
+	void BackMove();
+
+	UFUNCTION(BlueprintCallable)
+	void FrontMove();
+
+	UFUNCTION(BlueprintCallable)
+	void RightMove();
+
+	UFUNCTION(BlueprintCallable)
+	void LeftMove();
+
+	UFUNCTION(BlueprintCallable)
+	void FPSJump();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

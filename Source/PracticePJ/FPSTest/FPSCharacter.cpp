@@ -49,3 +49,27 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
 }
 
+void AFPSCharacter::BackMove()
+{
+	AddMovementInput(FVector(-1.0f, 0.0f, 0.0f), 1.0f);
+}
+
+void AFPSCharacter::FrontMove()
+{
+	AddMovementInput(FVector(1.0f, 0.0f, 0.0f), 1.0f);
+}
+
+void AFPSCharacter::RightMove()
+{
+	AddMovementInput(FVector(0.0f, 1.0f, 0.0f), 1.0f);
+}
+
+void AFPSCharacter::LeftMove()
+{
+	AddMovementInput(FVector(0.0f, -1.0f, 0.0f), 1.0f);
+}
+
+void AFPSCharacter::FPSJump()
+{
+	AddMovementInput(FVector(0.0f, 0.0f, 1.0f), 1.0f);
+}
