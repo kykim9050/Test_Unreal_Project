@@ -2,6 +2,11 @@
 
 
 #include "FPSTest/FPSCharacter.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
+#include "Kismet/KismetMathLibrary.h"
+
+
 
 // Sets default values
 AFPSCharacter::AFPSCharacter()
@@ -9,6 +14,18 @@ AFPSCharacter::AFPSCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
+	SpringArm->SetupAttachment(GetRootComponent());
+
+	SpringArm->TargetArmLength = 500.0f;
+
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	Camera->SetupAttachment(SpringArm);
+
+	FQuat Quat = FQuat();
+	UKismetMathLibrary::Quat_SetFromEuler(Quat, FVector(0.0f, -35.0f, 0.0f));
+	SpringArm->SetRelativeRotation(Quat);
+	SpringArm->SetRelativeLocation(FVector(0.0f, 0.0f, 100.0f));
 }
 
 // Called when the game starts or when spawned
