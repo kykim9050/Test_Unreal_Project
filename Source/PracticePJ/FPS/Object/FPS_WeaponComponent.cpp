@@ -79,7 +79,9 @@ bool UFPS_WeaponComponent::AttachWeapon(AFPSCharacter* TargetCharacter)
 
 	// Attach the weapon to the First Person Character
 	FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget, true);
-	//AttachToComponent(Character->GetMesh1P(), AttachmentRules, FName(TEXT("GripPoint")));
+	FName GunAttachSpot = Character->GetMesh()->GetSocketBoneName(FName(TEXT("GunSock")));
+	AttachToComponent(Character->GetMesh(), AttachmentRules, GunAttachSpot);
+
 
 	// add the weapon as an instance component to the character
 	Character->AddInstanceComponent(this);
