@@ -3,24 +3,30 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+#include "Components/SphereComponent.h"
+#include "FPSTest/FPSCharacter.h"
 #include "FPS_PickUpComponent.generated.h"
 
-UCLASS()
-class PRACTICEPJ_API AFPS_PickUpComponent : public AActor
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPickUp, AFPSCharacter*, PickUpCharacter);
+
+UCLASS(Blueprintable, BlueprintType, ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+class PRACTICEPJ_API UFPS_PickUpComponent : public USphereComponent
 {
 	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	AFPS_PickUpComponent();
+
+public:
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnPickUp OnPickUp;
+
+	UFPS_PickUpComponent();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	UFUNCTION()
+	void OnSphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+private:
+	
 
 };

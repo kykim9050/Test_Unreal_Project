@@ -3,25 +3,30 @@
 
 #include "FPS/Object/FPS_PickUpComponent.h"
 
-// Sets default values
-AFPS_PickUpComponent::AFPS_PickUpComponent()
+UFPS_PickUpComponent::UFPS_PickUpComponent()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
+	// Setup the Sphere Collision
+	SphereRadius = 32.f;
 }
 
-// Called when the game starts or when spawned
-void AFPS_PickUpComponent::BeginPlay()
+void UFPS_PickUpComponent::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	// Register our Overlap Event
+	OnComponentBeginOverlap.AddDynamic(this, &UFPS_PickUpComponent::OnSphereBeginOverlap);
 }
 
-// Called every frame
-void AFPS_PickUpComponent::Tick(float DeltaTime)
+void UFPS_PickUpComponent::OnSphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	Super::Tick(DeltaTime);
+	// Checking if it is a First Person Character overlapping
+	AFPSCharacter* Character = Cast<AFPSCharacter>(OtherActor);
+	if (Character != nullptr)
+	{
+		// Notify that the actor is being picked up
+		OnPickUp.Broadcast(Character);
 
+		// Unregister from the Overlap Event so it is no longer triggered
+		OnComponentBeginOverlap.RemoveAll(this);
+	}
 }
-
