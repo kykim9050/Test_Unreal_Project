@@ -39,12 +39,18 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* FireAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* DetachAction;
+
 	/** Sets default values for this component's properties */
 	UFPS_WeaponComponent();
 
 	/** Attaches the actor to a FirstPersonCharacter */
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	bool AttachWeapon(class AFPSCharacter* TargetCharacter);
+
+	UFUNCTION(BlueprintCallable, Category = "Weapon")
+	void Detach();
 
 	///** Make the weapon Fire a Projectile */
 	//UFUNCTION(BlueprintCallable, Category = "Weapon")
@@ -57,6 +63,7 @@ protected:
 
 private:
 	/** The Character holding this weapon*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Owner", meta = (AllowPrivateAccess = "true"))
 	AFPSCharacter* Character;
 
 };

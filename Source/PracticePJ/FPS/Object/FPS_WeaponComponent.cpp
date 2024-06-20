@@ -67,6 +67,13 @@ UFPS_WeaponComponent::UFPS_WeaponComponent()
 //	}
 //}
 
+
+void UFPS_WeaponComponent::Detach()
+{
+	int a = 0;
+}
+
+
 bool UFPS_WeaponComponent::AttachWeapon(AFPSCharacter* TargetCharacter)
 {
 	Character = TargetCharacter;
