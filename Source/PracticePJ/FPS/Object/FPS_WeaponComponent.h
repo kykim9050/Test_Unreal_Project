@@ -52,9 +52,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	void Detach();
 
-	///** Make the weapon Fire a Projectile */
-	//UFUNCTION(BlueprintCallable, Category = "Weapon")
-	//void Fire();
+	/** Make the weapon Fire a Projectile */
+	UFUNCTION(BlueprintCallable, Category = "Weapon")
+	void Fire();
 
 protected:
 	/** Ends gameplay for this component. */
