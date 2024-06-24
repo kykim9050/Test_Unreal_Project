@@ -29,6 +29,8 @@ void UFPS_WeaponComponent::Fire()
 		return;
 	}
 
+	IsFire = true;
+
 	//// Try and fire a projectile
 	//if (ProjectileClass != nullptr)
 	//{
@@ -67,6 +69,10 @@ void UFPS_WeaponComponent::Fire()
 	//}
 }
 
+void UFPS_WeaponComponent::FireEnd()
+{
+	IsFire = false;
+}
 
 void UFPS_WeaponComponent::Detach()
 {
@@ -106,6 +112,9 @@ bool UFPS_WeaponComponent::AttachWeapon(AFPSCharacter* TargetCharacter)
 		{
 			// Fire
 			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UFPS_WeaponComponent::Fire);
+
+			// Fire End
+			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Completed, this, &UFPS_WeaponComponent::FireEnd);
 		}
 	}
 
