@@ -72,3 +72,6 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# 저장용량이 큰 메인 스테이지 레벨은 따로 저장하기 위해 ignore 설정
+Content/Level/MainLevel/*
