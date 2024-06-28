@@ -3,6 +3,7 @@
 
 #include "Global/KKYGameInstance.h"
 #include "Global/DataTable/SideScrollGameSettingRow.h"
+#include "Global/DataAssets/InputDatas.h"
 
 UKKYGameInstance::UKKYGameInstance()
 {

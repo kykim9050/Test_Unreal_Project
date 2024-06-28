@@ -26,6 +26,6 @@ private:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowprivateAccess = "true"))
 	UDataTable* SideScrollData = nullptr;
-
+	
 	UKKYGameInstance();
 };
