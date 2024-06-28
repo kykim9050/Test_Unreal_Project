@@ -74,9 +74,31 @@ void UFPS_WeaponComponent::FireEnd()
 	IsFire = false;
 }
 
-void UFPS_WeaponComponent::Detach()
+void UFPS_WeaponComponent::DetachWeapon()
 {
-	int a = 0;
+	FDetachmentTransformRules DetachmentRules(EDetachmentRule::KeepWorld, true);
+
+	DetachFromComponent(DetachmentRules);
+	
+
+	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController()))
+	{
+		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
+		{
+			// Set the priority of the mapping to 1, so that it overrides the Jump action with the Fire action when using touch input
+			//Subsystem->RemoveMappingContext(FireMappingContext);
+		}
+
+		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
+		{
+			TArray<FEnhancedInputActionValueBinding> Actions;
+
+			//EnhancedInputComponent->ClearActionBindings();
+			//Actions = EnhancedInputComponent->GetActionEventBindings();
+		}
+	}
+
+	Character->RemoveInstanceComponent(this);
 }
 
 
@@ -115,6 +137,8 @@ bool UFPS_WeaponComponent::AttachWeapon(AFPSCharacter* TargetCharacter)
 
 			// Fire End
 			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Completed, this, &UFPS_WeaponComponent::FireEnd);
+
+			EnhancedInputComponent->BindAction(DetachAction, ETriggerEvent::Started, this, &UFPS_WeaponComponent::DetachWeapon);
 		}
 	}
 

@@ -8,6 +8,7 @@
 #include "FPS_PickUpComponent.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPickUp, AFPSCharacter*, PickUpCharacter);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPutDown, AFPSCharacter*, PutDownCharacter);
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class PRACTICEPJ_API UFPS_PickUpComponent : public USphereComponent
@@ -16,7 +17,10 @@ class PRACTICEPJ_API UFPS_PickUpComponent : public USphereComponent
 
 public:
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
-	FOnPickUp OnPickUp;
+	FOnPickUp OnPickUp; 
+
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnPutDown OnPutDown;
 
 	UFPS_PickUpComponent();
 

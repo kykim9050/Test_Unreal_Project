@@ -50,7 +50,7 @@ public:
 	bool AttachWeapon(class AFPSCharacter* TargetCharacter);
 
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
-	void Detach();
+	void DetachWeapon();
 
 	/** Make the weapon Fire a Projectile */
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
