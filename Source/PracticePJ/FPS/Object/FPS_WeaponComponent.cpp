@@ -13,6 +13,7 @@
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
 #include "Global/KKYGameInstance.h"
+#include "Global/DataAssets/InputDatas.h"
 
 // Sets default values for this component's properties
 UFPS_WeaponComponent::UFPS_WeaponComponent()
@@ -21,21 +22,6 @@ UFPS_WeaponComponent::UFPS_WeaponComponent()
 	MuzzleOffset = FVector(100.0f, 0.0f, 10.0f);
 }
 
-void UFPS_WeaponComponent::BeginPlay()
-{
-	UKKYGameInstance* Inst = GetWorld()->GetGameInstanceChecked<UKKYGameInstance>();
-
-	if (nullptr == Inst)
-	{
-		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == Inst)"), __FUNCTION__, __LINE__);
-	}
-
-	//Inst->GetSideScrollData();
-
-
-	//FireMappingContext = Inst->GetInputDataAsset()
-	
-}
 
 void UFPS_WeaponComponent::Fire()
 {
@@ -126,6 +112,22 @@ bool UFPS_WeaponComponent::AttachWeapon(AFPSCharacter* TargetCharacter)
 	{
 		return false;
 	}
+
+	{
+		UKKYGameInstance* Inst = GetWorld()->GetGameInstanceChecked<UKKYGameInstance>();
+
+		if (nullptr == Inst)
+		{
+			UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == Inst)"), __FUNCTION__, __LINE__);
+		}
+
+		UInputDatas* Asset = Inst->GetInputDataAsset();
+		FireMappingContext = Asset->GetInputMapping();
+
+		FireAction = *(Asset->GetActions().Find(TEXT("Shoot")));
+		DetachAction = *(Asset->GetActions().Find(TEXT("Detach")));
+	}
+
 
 	// Attach the weapon to the First Person Character
 	FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget, true);

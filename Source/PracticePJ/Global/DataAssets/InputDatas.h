@@ -17,7 +17,7 @@ class UInputDatas : public UDataAsset
 public:
 	class UInputMappingContext* GetInputMapping();
 
-	TArray<class UInputAction*> GetActions();
+	TMap<FString, class UInputAction*> GetActions();
 
 protected:
 
@@ -26,6 +26,6 @@ private:
 	class UInputMappingContext* InputMapping = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	TArray<class UInputAction*> Actions = TArray<class UInputAction*>();
+	TMap<FString, class UInputAction*> Actions = TMap<FString, class UInputAction*>();
 
 };

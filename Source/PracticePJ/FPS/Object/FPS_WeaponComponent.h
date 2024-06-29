@@ -56,8 +56,6 @@ protected:
 	// Fire 기능 종료
 	void FireEnd();
 
-	void BeginPlay() override;
-
 private:
 	/** The Character holding this weapon*/
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Owner", meta = (AllowPrivateAccess = "true"))
