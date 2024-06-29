@@ -4,7 +4,6 @@
 #include "FPS/Object/FPS_WeaponComponent.h"
 // Copyright Epic Games, Inc. All Rights Reserved.
 #include "FPSTest/FPSCharacter.h"
-//#include "FPSTestProjectile.h"
 #include "GameFramework/PlayerController.h"
 #include "Camera/PlayerCameraManager.h"
 #include "Kismet/GameplayStatics.h"
@@ -13,6 +12,7 @@
 #include "Animation/AnimInstance.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
+#include "Global/KKYGameInstance.h"
 
 // Sets default values for this component's properties
 UFPS_WeaponComponent::UFPS_WeaponComponent()
@@ -21,6 +21,21 @@ UFPS_WeaponComponent::UFPS_WeaponComponent()
 	MuzzleOffset = FVector(100.0f, 0.0f, 10.0f);
 }
 
+void UFPS_WeaponComponent::BeginPlay()
+{
+	UKKYGameInstance* Inst = GetWorld()->GetGameInstanceChecked<UKKYGameInstance>();
+
+	if (nullptr == Inst)
+	{
+		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == Inst)"), __FUNCTION__, __LINE__);
+	}
+
+	//Inst->GetSideScrollData();
+
+
+	//FireMappingContext = Inst->GetInputDataAsset()
+	
+}
 
 void UFPS_WeaponComponent::Fire()
 {

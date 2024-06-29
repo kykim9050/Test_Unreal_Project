@@ -16,7 +16,7 @@ class PRACTICEPJ_API UKKYGameInstance : public UGameInstance
 public:
 
 	const struct FSideScrollGameSettingRow* GetSideScrollData();
-	const class UInputDatas* GetInputDataAsset();
+	class UInputDatas* GetInputDataAsset();
 
 protected:
 

@@ -31,16 +31,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	FVector MuzzleOffset;
 
-	/** MappingContext */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputMappingContext* FireMappingContext;
 
-	/** Fire Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* FireAction;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* DetachAction;
 
 	/** Sets default values for this component's properties */
 	UFPS_WeaponComponent();
@@ -65,12 +56,25 @@ protected:
 	// Fire 기능 종료
 	void FireEnd();
 
+	void BeginPlay() override;
+
 private:
 	/** The Character holding this weapon*/
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Owner", meta = (AllowPrivateAccess = "true"))
 	AFPSCharacter* Character;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Owner", meta = (AllowPrivateAccess = "true"))
-	bool IsFire = false;;
+	bool IsFire = false;
+
+	/** MappingContext */
+	UPROPERTY()
+	class UInputMappingContext* FireMappingContext = nullptr;
+
+	/** Fire Input Action */
+	UPROPERTY()
+	class UInputAction* FireAction = nullptr;
+
+	UPROPERTY()
+	class UInputAction* DetachAction = nullptr;
 
 };

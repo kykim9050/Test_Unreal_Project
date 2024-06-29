@@ -27,15 +27,14 @@ const struct FSideScrollGameSettingRow* UKKYGameInstance::GetSideScrollData()
 	return Data;
 }
 
-const UInputDatas* UKKYGameInstance::GetInputDataAsset()
+UInputDatas* UKKYGameInstance::GetInputDataAsset()
 {
 	if (nullptr == InputDataAsset)
 	{
 		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == InputDatas)"), __FUNCTION__, __LINE__);
 	}
 
-
-	UInputDatas* Data =	Cast<UInputDatas>(InputDataAsset);
+	UInputDatas* Data = Cast<UInputDatas, UDataAsset>(InputDataAsset);
 
 	if (nullptr == Data)
 	{

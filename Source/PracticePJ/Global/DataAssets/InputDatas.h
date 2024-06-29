@@ -15,14 +15,17 @@ class UInputDatas : public UDataAsset
 	GENERATED_BODY()
 	
 public:
+	class UInputMappingContext* GetInputMapping();
+
+	TArray<class UInputAction*> GetActions();
 
 protected:
 
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	class UInputMappingContext* InputMapping;
+	class UInputMappingContext* InputMapping = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	TArray<class UInputAction*> Actions;
+	TArray<class UInputAction*> Actions = TArray<class UInputAction*>();
 
 };
