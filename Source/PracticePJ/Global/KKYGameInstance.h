@@ -16,6 +16,7 @@ class PRACTICEPJ_API UKKYGameInstance : public UGameInstance
 public:
 
 	const struct FSideScrollGameSettingRow* GetSideScrollData();
+	const class UInputDatas* GetInputDataAsset();
 
 protected:
 
@@ -27,5 +28,8 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowprivateAccess = "true"))
 	UDataTable* SideScrollData = nullptr;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowprivateAccess = "true"))
+	UDataAsset* InputDataAsset = nullptr;
+
 	UKKYGameInstance();
 };
