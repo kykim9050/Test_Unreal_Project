@@ -86,16 +86,15 @@ void UFPS_WeaponComponent::DetachWeapon()
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{
-			// Set the priority of the mapping to 1, so that it overrides the Jump action with the Fire action when using touch input
-			//Subsystem->RemoveMappingContext(FireMappingContext);
+			FireMappingContext = nullptr;
 		}
 
 		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
 		{
-			TArray<FEnhancedInputActionValueBinding> Actions;
+			EnhancedInputComponent->ClearBindingsForObject(this);
 
-			//EnhancedInputComponent->ClearActionBindings();
-			//Actions = EnhancedInputComponent->GetActionEventBindings();
+			FireAction = nullptr;
+			DetachAction = nullptr;
 		}
 	}
 
