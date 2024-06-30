@@ -3,39 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/SkeletalMeshComponent.h"
-#include "FPS_WeaponComponent.generated.h"
+#include "Components/StaticMeshComponent.h"
+#include "FPS_ItemComponent.generated.h"
 
 /**
  * 
  */
 UCLASS(Blueprintable, BlueprintType, ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class PRACTICEPJ_API UFPS_WeaponComponent : public USkeletalMeshComponent
+class PRACTICEPJ_API UFPS_ItemComponent : public UStaticMeshComponent
 {
 	GENERATED_BODY()
-	
+
 public:
-	///** Projectile class to spawn */
-	//UPROPERTY(EditDefaultsOnly, Category = Projectile)
-	//TSubclassOf<class AFPSTestProjectile> ProjectileClass;
-
-	/** Sound to play each time we fire */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	USoundBase* FireSound;
-
-	/** AnimMontage to play each time we fire */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	UAnimMontage* FireAnimation;
-	
-	/** Gun muzzle's offset from the characters location */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	FVector MuzzleOffset;
-
-
-
-	/** Sets default values for this component's properties */
-	UFPS_WeaponComponent();
-
 	/** Attaches the actor to a FirstPersonCharacter */
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	bool AttachWeapon(class AFPSCharacter* TargetCharacter);
@@ -47,8 +26,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	void Fire();
 
-
 protected:
+	UFPS_ItemComponent();
+
 	/** Ends gameplay for this component. */
 	UFUNCTION()
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;

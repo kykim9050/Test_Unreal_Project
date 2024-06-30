@@ -4,6 +4,7 @@
 #include "Global/KKYGameInstance.h"
 #include "Global/DataTable/SideScrollGameSettingRow.h"
 #include "Global/DataAssets/InputDatas.h"
+#include "Global/DataTable/MeshDataRow.h"
 
 UKKYGameInstance::UKKYGameInstance()
 {
@@ -42,4 +43,28 @@ UInputDatas* UKKYGameInstance::GetInputDataAsset()
 	}
 
 	return Data;
+}
+
+UStaticMesh* UKKYGameInstance::GetStaticMeshData(FName _Name)
+{
+	if (nullptr == StaticMeshData)
+	{
+		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == StaticMeshData)"), __FUNCTION__, __LINE__);
+	}
+
+	FMeshDataRow* Data = StaticMeshData->FindRow<FMeshDataRow>(_Name, nullptr);
+
+	if (nullptr == Data)
+	{
+		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == Data)"), __FUNCTION__, __LINE__, *_Name.ToString());
+	}
+
+	UStaticMesh* StaticMesh = Data->Mesh;
+
+	if (nullptr == StaticMesh)
+	{
+		UE_LOG(LogTemp, Fatal, TEXT("%S(%u)> if (nullptr == StaticMesh)"), __FUNCTION__, __LINE__);
+	}
+
+	return StaticMesh;
 }

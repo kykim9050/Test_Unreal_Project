@@ -17,6 +17,8 @@ public:
 
 	const struct FSideScrollGameSettingRow* GetSideScrollData();
 	class UInputDatas* GetInputDataAsset();
+	class UStaticMesh* GetStaticMeshData(FName _Name);
+
 
 protected:
 
@@ -30,6 +32,9 @@ private:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowprivateAccess = "true"))
 	UDataAsset* InputDataAsset = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowprivateAccess = "true"))
+	UDataTable* StaticMeshData = nullptr;
 
 	UKKYGameInstance();
 };
