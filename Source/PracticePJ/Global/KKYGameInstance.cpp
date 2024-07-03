@@ -5,6 +5,7 @@
 #include "Global/DataTable/SideScrollGameSettingRow.h"
 #include "Global/DataAssets/InputDatas.h"
 #include "Global/DataTable/MeshDataRow.h"
+#include "Global/DataTable/GlobalObjectRow.h"
 
 UKKYGameInstance::UKKYGameInstance()
 {
@@ -67,4 +68,22 @@ UStaticMesh* UKKYGameInstance::GetStaticMeshData(FName _Name)
 	}
 
 	return StaticMesh;
+}
+
+TSubclassOf<UObject> UKKYGameInstance::GetGlobalObjectClass(FName _Name)
+{
+	if (nullptr == GlobalObjectTable)
+	{
+		UE_LOG(LogType, Fatal, TEXT("%S(%u)> if (nullptr == MonsterDataTable)"), __FUNCTION__, __LINE__);
+	}
+
+	FGlobalObjectRow* Data = GlobalObjectTable->FindRow<FGlobalObjectRow>(_Name, nullptr);
+
+	if (nullptr == Data)
+	{
+		UE_LOG(LogType, Error, TEXT("%S(%u)> %s Name Data Is Nullptr"), __FUNCTION__, __LINE__, *_Name.ToString());
+		return nullptr;
+	}
+
+	return Data->Object;
 }

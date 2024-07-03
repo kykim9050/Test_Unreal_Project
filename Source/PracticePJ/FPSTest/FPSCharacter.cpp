@@ -5,7 +5,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Kismet/KismetMathLibrary.h"
-
+#include "Global/GlobalFunction.h"
 
 
 // Sets default values
@@ -40,6 +40,9 @@ void AFPSCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+#if WITH_EDITOR
+	UGlobalFunction::DebugTextPrint(GetWorld(), FString::Printf(TEXT("Player Pos : %s"), *GetActorLocation().ToString()));
+#endif
 }
 
 // Called to bind functionality to input

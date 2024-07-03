@@ -4,6 +4,7 @@
 #include "Global/GlobalHUD.h"
 #include "Global/Debug/DebugWidget.h"
 #include "Global/KKYGameInstance.h"
+#include "Global/GlobalFunction.h"
 
 void AGlobalHUD::AddDebugString(FString _Text)
 {
@@ -20,8 +21,15 @@ void AGlobalHUD::BeginPlay()
 	Super::BeginPlay();
 
 #if WITH_EDITOR
+	UKKYGameInstance* Inst = UGlobalFunction::GetKKYGameInstance(GetWorld());
+	TSubclassOf<UUserWidget> Item(Inst->GetGlobalObjectClass("Debug"));
+	DebugWidgetClass = Item;
 
-	
+	if (nullptr != DebugWidgetClass)
+	{
+		DebugWidget = CreateWidget<UDebugWidget>(GetWorld(), DebugWidgetClass);
+		DebugWidget->AddToViewport();
+	}
 
 #endif
 
