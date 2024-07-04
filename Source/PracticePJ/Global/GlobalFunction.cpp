@@ -18,6 +18,7 @@ UKKYGameInstance* UGlobalFunction::GetKKYGameInstance(const UWorld* WorldContext
 	return Inst;
 }
 
+#if WITH_EDITOR
 void UGlobalFunction::DebugTextPrint(UWorld* _World, FString _Text)
 {
 	APlayerController* Con = UGameplayStatics::GetPlayerController(_World, 0);
@@ -30,3 +31,4 @@ void UGlobalFunction::DebugTextPrint(UWorld* _World, FString _Text)
 
 	GlobalHUD->AddDebugString(_Text);
 }
+#endif

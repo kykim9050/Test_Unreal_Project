@@ -21,5 +21,5 @@ public:
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resources")
-	TSubclassOf<UObject> Object;
+	TSubclassOf<UObject> Object = TSubclassOf<UObject>();
 };

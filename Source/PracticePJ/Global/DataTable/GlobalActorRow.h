@@ -20,8 +20,8 @@ struct FGlobalActorRow : public FTableRowBase
 	TSubclassOf<AActor> Actor = nullptr;
 
 	UPROPERTY(Category = "Resources", EditAnywhere, BlueprintReadWrite)
-	int HP;
+	int HP = 100;
 
 	UPROPERTY(Category = "Resources", EditAnywhere, BlueprintReadWrite)
-	float Speed;
+	float Speed = 100.0f;
 };

@@ -6,6 +6,7 @@
 #include "Global/KKYGameInstance.h"
 #include "Global/GlobalFunction.h"
 
+#if WITH_EDITOR
 void AGlobalHUD::AddDebugString(FString _Text)
 {
 	if (nullptr == DebugWidget)
@@ -15,6 +16,7 @@ void AGlobalHUD::AddDebugString(FString _Text)
 
 	DebugWidget->AddDebugString(_Text);
 }
+#endif
 
 void AGlobalHUD::BeginPlay()
 {
