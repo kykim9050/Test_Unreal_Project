@@ -40,24 +40,24 @@ void UEditFunctionLibrary::DataTableTest(UDataTable* _DataTable)
 		return;
 	}
 
-	//for (size_t i = 0; i < FileList.Num(); i++)
-	//{
-	//	FGlobalObjectRow NewData = FGlobalObjectRow();
+	for (size_t i = 0; i < FileList.Num(); i++)
+	{
+		FGlobalObjectRow NewData = FGlobalObjectRow();
 
-	//	FString Path = TEXT("Blueprint'/Game/BluePrint/FPSShoot/");
+		FString Path = TEXT("Blueprint'/Game/BluePrint/FPSShoot/");
 
-	//	FString FileName = FileList[i];
+		FString FileName = FileList[i];
 
-	//	FileName = FileName.Replace(TEXT(".uasset"), TEXT(""));
-	//	
-	//	Path += FileName + "." + FileName + "_C";
+		FileName = FileName.Replace(TEXT(".uasset"), TEXT(""));
+		
+		Path += FileName + "." + FileName + "_C";
 
-	//	TSubclassOf<UObject> MyActorClass = LoadClass<UObject>(nullptr, *Path);
+		TSubclassOf<UObject> MyActorClass = LoadClass<UObject>(nullptr, *Path);
 
-	//	NewData.Object = MyActorClass;
+		NewData.Object = MyActorClass;
 
-	//	_DataTable->AddRow(*FileName, NewData);
-	//}
+		_DataTable->AddRow(*FileName, NewData);
+	}
 
-	//_DataTable->Modify();
+	_DataTable->Modify();
 }

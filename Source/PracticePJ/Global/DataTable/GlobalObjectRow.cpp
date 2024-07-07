@@ -2,13 +2,3 @@
 
 
 #include "Global/DataTable/GlobalObjectRow.h"
-
-FGlobalObjectRow::FGlobalObjectRow()
-{
-
-}
-
-FGlobalObjectRow::~FGlobalObjectRow()
-{
-
-}

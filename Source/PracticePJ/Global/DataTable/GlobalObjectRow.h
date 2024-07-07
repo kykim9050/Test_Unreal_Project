@@ -16,8 +16,8 @@ struct FGlobalObjectRow : public FTableRowBase
 	GENERATED_BODY()
 
 public:
-	FGlobalObjectRow();
-	~FGlobalObjectRow();
+	FGlobalObjectRow()  {	}
+	~FGlobalObjectRow() {	}
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resources")
