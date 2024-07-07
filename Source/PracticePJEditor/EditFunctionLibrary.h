@@ -13,15 +13,7 @@ UCLASS()
 class PRACTICEPJEDITOR_API UEditFunctionLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-
-public:
-
+	
 	UFUNCTION(BlueprintCallable, Category = "Game")
 	static void DataTableTest(UDataTable* _DataTable);
-
-protected:
-	UEditFunctionLibrary();
-
-private:
-
 };
