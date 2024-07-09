@@ -12,7 +12,8 @@
 				"Engine",
 				"CoreUObject",
 				"AnimGraphRuntime",
-				"UMG"
+				"UMG",
+				"Blutility"
 			]
 		},
 		{
