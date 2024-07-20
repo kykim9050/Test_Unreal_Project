@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "TCCharacter.generated.h"
 
+class USpringArmComponent;
+class UCameraComponent;
 UCLASS()
 class PRACTICEPJ_API ATCCharacter : public ACharacter
 {
@@ -27,9 +29,9 @@ protected:
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	class USpringArmComponent* SpringArm = nullptr;
+	USpringArmComponent* SpringArm = nullptr;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	class UCameraComponent* Camera = nullptr;
+	UCameraComponent* Camera = nullptr;
 
 };

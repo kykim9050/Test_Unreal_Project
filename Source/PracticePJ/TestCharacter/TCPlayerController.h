@@ -14,4 +14,9 @@ class PRACTICEPJ_API ATCPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
+public:
+	ATCPlayerController();
+
+	void SetupInputComponent() override;
+
 };
