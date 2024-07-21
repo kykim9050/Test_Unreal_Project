@@ -21,6 +21,8 @@ ATCPlayerController::ATCPlayerController()
 
 void ATCPlayerController::MoveFront()
 {
+	//ChangeAnimation(ETCPlayerAnimation::Rifle_WalkForward);
+
 	FVector Forward = GetPawn()->GetActorForwardVector();
 	GetPawn()->AddMovementInput(Forward);
 }

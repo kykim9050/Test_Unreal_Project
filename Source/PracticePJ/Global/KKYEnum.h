@@ -8,6 +8,13 @@
 
 
 UENUM(BlueprintType)
+enum class ETCPlayerAnimation : uint8
+{
+	Rifle_Idle			UMETA(DisplayName = "라이플 Idle"),
+	Rifle_WalkForward	UMETA(DisplayName = "라이플 들고 앞 걷기")
+};
+
+UENUM(BlueprintType)
 enum class ESideScrollAni : uint8
 {
 	Run,
