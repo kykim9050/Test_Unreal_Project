@@ -18,8 +18,12 @@ class PRACTICEPJ_API ATCPlayerController : public APlayerController
 public:
 	ATCPlayerController();
 
-	//UPROPERTY(BlueprintCallable)
-	//void MoveFront()
+public:
+	UFUNCTION(BlueprintCallable)
+	void MoveFront();
+
+	UFUNCTION(BlueprintCallable)
+	void Rotating();
 
 	UFUNCTION(BlueprintCallable)
 	void SetupInputComponent() override;

@@ -19,22 +19,34 @@ ATCPlayerController::ATCPlayerController()
 	InputData = ResPath.Object;
 }
 
+void ATCPlayerController::MoveFront()
+{
+	FVector Forward = GetPawn()->GetActorForwardVector();
+	GetPawn()->AddMovementInput(Forward);
+}
 
-//void ATCPlayerController::MoveFront()
-//{
-//	int a = 0;
-//}
+void ATCPlayerController::Rotating()
+{
+	
+}
 
 void ATCPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
-	FInputModeGameOnly InputMode;
-	SetInputMode(InputMode);
+	//FInputModeGameOnly InputMode;
+	//SetInputMode(InputMode);
 
 	UEnhancedInputLocalPlayerSubsystem* InputSystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
 
 	UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent);
 
-	int a = 0;
+	InputSystem->ClearAllMappings();
+	InputSystem->AddMappingContext(InputData->InputMapping, 0);
+
+	if (nullptr != InputData->InputMapping)
+	{
+		EnhancedInputComponent->BindAction(InputData->Actions[0], ETriggerEvent::Triggered, this, &ATCPlayerController::MoveFront);
+		EnhancedInputComponent->BindAction(InputData->Actions[1], ETriggerEvent::Triggered, this, &ATCPlayerController::Rotating);
+	}
 }
