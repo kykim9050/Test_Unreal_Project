@@ -25,6 +25,12 @@ void ATCPlayerController::MoveFront()
 	GetPawn()->AddMovementInput(Forward);
 }
 
+void ATCPlayerController::MoveBack()
+{
+	FVector Backward = GetPawn()->GetActorForwardVector() * (-1);
+	GetPawn()->AddMovementInput(Backward);
+}
+
 void ATCPlayerController::Rotating()
 {
 	
@@ -47,6 +53,7 @@ void ATCPlayerController::SetupInputComponent()
 	if (nullptr != InputData->InputMapping)
 	{
 		EnhancedInputComponent->BindAction(InputData->Actions[0], ETriggerEvent::Triggered, this, &ATCPlayerController::MoveFront);
+		EnhancedInputComponent->BindAction(InputData->Actions[2], ETriggerEvent::Triggered, this, &ATCPlayerController::MoveBack);
 		EnhancedInputComponent->BindAction(InputData->Actions[1], ETriggerEvent::Triggered, this, &ATCPlayerController::Rotating);
 	}
 }

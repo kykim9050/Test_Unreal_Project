@@ -23,6 +23,9 @@ public:
 	void MoveFront();
 
 	UFUNCTION(BlueprintCallable)
+	void MoveBack();
+
+	UFUNCTION(BlueprintCallable)
 	void Rotating();
 
 	UFUNCTION(BlueprintCallable)
