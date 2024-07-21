@@ -2,6 +2,7 @@
 
 #include "TestCharacter/TCPlayerController.h"
 #include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
 #include "Global/DataAssets/InputActionDatas.h"
 
 ATCPlayerController::ATCPlayerController()
@@ -19,6 +20,11 @@ ATCPlayerController::ATCPlayerController()
 }
 
 
+//void ATCPlayerController::MoveFront()
+//{
+//	int a = 0;
+//}
+
 void ATCPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
@@ -26,4 +32,9 @@ void ATCPlayerController::SetupInputComponent()
 	FInputModeGameOnly InputMode;
 	SetInputMode(InputMode);
 
+	UEnhancedInputLocalPlayerSubsystem* InputSystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
+
+	UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent);
+
+	int a = 0;
 }
