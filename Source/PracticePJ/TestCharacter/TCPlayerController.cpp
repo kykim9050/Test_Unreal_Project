@@ -2,10 +2,15 @@
 
 #include "TestCharacter/TCPlayerController.h"
 #include "EnhancedInputComponent.h"
+#include "Global/DataAssets/InputActionDatas.h"
 
 ATCPlayerController::ATCPlayerController()
 {
-	//FString RefPathString = "";
+	FString RefPathString = TEXT("InputActionDatas'/Game/ContentsRes/TestCharacter/Datas/DA_InputActionDatas.DA_InputActionDatas'");
+
+	ConstructorHelpers::FObjectFinder<UInputActionDatas> ResPath(*RefPathString);
+
+	int a = 0;
 }
 
 
