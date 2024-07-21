@@ -25,10 +25,10 @@ void ATCPlayCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (nullptr != AnimInst)
-	{
-		AnimInst->ChangeAnimation(AniValue);
-	}
+	//if (nullptr != AnimInst)
+	//{
+	//	AnimInst->ChangeAnimation(AniValue);
+	//}
 }
 
 // Called to bind functionality to input

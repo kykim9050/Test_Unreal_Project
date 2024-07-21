@@ -38,7 +38,7 @@ void ATCCharacter::BeginPlay()
 		GetGlobalAnimInstance()->PushAnimation(Montage.Key, Montage.Value);
 	}
 
-	//GetGlobalAnimInstance()->ChangeAnimation(ETCPlayerAnimation::Rifle_Idle);
+	GetGlobalAnimInstance()->ChangeAnimation(ETCPlayerAnimation::Rifle_Idle);
 }
 
 // Called every frame
