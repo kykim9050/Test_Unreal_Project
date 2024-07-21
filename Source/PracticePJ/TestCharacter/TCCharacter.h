@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
+#include "TestCharacter/TCPlayCharacter.h"
 #include "Global/KKYEnum.h"
 #include "TCCharacter.generated.h"
 
 class USpringArmComponent;
 class UCameraComponent;
 UCLASS()
-class PRACTICEPJ_API ATCCharacter : public ACharacter
+class PRACTICEPJ_API ATCCharacter : public ATCPlayCharacter
 {
 	GENERATED_BODY()
 
