@@ -9,6 +9,7 @@
 /**
  * 
  */
+class UInputActionDatas;
 UCLASS()
 class PRACTICEPJ_API ATCPlayerController : public APlayerController
 {
@@ -18,5 +19,14 @@ public:
 	ATCPlayerController();
 
 	void SetupInputComponent() override;
+
+	UPROPERTY()
+	UInputActionDatas* InputData = nullptr;
+
+protected:
+
+
+private:
+
 
 };

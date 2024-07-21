@@ -10,7 +10,12 @@ ATCPlayerController::ATCPlayerController()
 
 	ConstructorHelpers::FObjectFinder<UInputActionDatas> ResPath(*RefPathString);
 
-	int a = 0;
+	if (false == ResPath.Succeeded())
+	{
+		return;
+	}
+
+	InputData = ResPath.Object;
 }
 
 
