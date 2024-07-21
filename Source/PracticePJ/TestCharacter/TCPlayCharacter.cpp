@@ -32,7 +32,14 @@ void ATCPlayCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 }
 
+void ATCPlayCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ATCPlayCharacter, AniValue);
+}
+
 void ATCPlayCharacter::ChangeAnimation_Implementation(uint8 _Type)
 {
-	int a = 0;
+	AniValue = _Type;
 }
