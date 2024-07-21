@@ -46,3 +46,7 @@ void ATCCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 }
 
+void ATCCharacter::ChangeAnimation(ETCPlayerAnimation _Animation)
+{
+
+}

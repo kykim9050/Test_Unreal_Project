@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Global/KKYEnum.h"
 #include "TCCharacter.generated.h"
 
 class USpringArmComponent;
@@ -22,6 +23,9 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+
+	void ChangeAnimation(ETCPlayerAnimation _Animation);
 
 
 protected:

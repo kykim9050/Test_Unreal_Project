@@ -72,5 +72,5 @@ void ATCPlayerController::ChangeAnimation(ETCPlayerAnimation _Animation)
 		return;
 	}
 
-	//Ch->ChangeAnimation(_Animation);
+	Ch->ChangeAnimation(_Animation);
 }
