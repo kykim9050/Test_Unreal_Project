@@ -34,6 +34,11 @@ public:
 	void ChangeAnimation(uint8 _Type);
 	void ChangeAnimation_Implementation(uint8 _Type);
 
+	FORCEINLINE UGlobalAnimInstance* GetGlobalAnimInstance() const
+	{
+		return AnimInst;
+	}
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

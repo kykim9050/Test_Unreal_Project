@@ -9,6 +9,7 @@
 /**
  * 
  */
+class UAnimMontage;
 UCLASS()
 class PRACTICEPJ_API UGlobalAnimInstance : public UAnimInstance
 {
@@ -22,6 +23,14 @@ public:
 	}
 
 	void ChangeAnimation(uint8 _Key);
+
+	template<typename EnumType>
+	void PushAnimation(EnumType _Key, UAnimMontage* _Montage)
+	{
+		PushAnimation(static_cast<uint8>(_Key), _Montage);
+	}
+
+	void PushAnimation(uint8 _Key, UAnimMontage* _Montage);
 
 protected:
 

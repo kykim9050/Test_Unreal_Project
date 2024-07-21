@@ -9,6 +9,7 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+class UAnimMontage;
 UCLASS()
 class PRACTICEPJ_API ATCCharacter : public ATCPlayCharacter
 {
@@ -39,4 +40,6 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* Camera = nullptr;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	TMap<ETCPlayerAnimation, UAnimMontage*> AnimMontages = TMap<ETCPlayerAnimation, UAnimMontage*>();
 };

@@ -5,6 +5,8 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "Global/KKYEnum.h"
+#include "Global/Animation/GlobalAnimInstance.h"
 
 // Sets default values
 ATCCharacter::ATCCharacter()
@@ -30,6 +32,13 @@ void ATCCharacter::BeginPlay()
 	UKismetMathLibrary::Quat_SetFromEuler(Quat, FVector(0.0f, -20.0f, 0.0f));
 	SpringArm->SetRelativeRotation(Quat);
 	SpringArm->SetRelativeLocation(FVector(0.0f, 0.0f, 100.0f));
+
+	for(TPair< ETCPlayerAnimation, class UAnimMontage*> Montage : AnimMontages)
+	{
+		GetGlobalAnimInstance()->PushAnimation(Montage.Key, Montage.Value);
+	}
+
+	//GetGlobalAnimInstance()->ChangeAnimation(ETCPlayerAnimation::Rifle_Idle);
 }
 
 // Called every frame
