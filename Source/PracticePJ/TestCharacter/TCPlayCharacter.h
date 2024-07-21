@@ -7,6 +7,8 @@
 #include "Net/UnrealNetwork.h"
 #include "TCPlayCharacter.generated.h"
 
+
+class UGlobalAnimInstance;
 UCLASS()
 class PRACTICEPJ_API ATCPlayCharacter : public ACharacter
 {
@@ -41,4 +43,8 @@ protected:
 private:	
 	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	uint8 AniValue = -1;
+
+	// Replicated 빼면 어떻게 되려나? 해보쟈
+	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UGlobalAnimInstance* AnimInst = nullptr;
 };

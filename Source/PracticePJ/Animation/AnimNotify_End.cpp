@@ -13,10 +13,10 @@ UAnimNotify_End::UAnimNotify_End()
 void UAnimNotify_End::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
 	Super::Notify(MeshComp, Animation, EventReference);
-	UGlobalAnimInstance* AnimInst = Cast<UGlobalAnimInstance>(MeshComp->GetAnimInstance());
+	//UGlobalAnimInstance* AnimInst = Cast<UGlobalAnimInstance>(MeshComp->GetAnimInstance());
 
-	if (nullptr != AnimInst)
-	{
-		AnimInst->ChangeAnimation(NextAnimationName);
-	}
+	//if (nullptr != AnimInst)
+	//{
+	//	AnimInst->ChangeAnimation(NextAnimationName);
+	//}
 }

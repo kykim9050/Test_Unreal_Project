@@ -3,21 +3,31 @@
 
 #include "Global/Animation/GlobalAnimInstance.h"
 
-void UGlobalAnimInstance::ChangeAnimation(const FString& _AniName)
+void UGlobalAnimInstance::ChangeAnimation(uint8 _Key)
 {
-	if (false == AnimMontages.Contains(_AniName))
+	if (false == AnimMontages.Contains(_Key))
 	{
 		UE_LOG(LogType, Fatal, TEXT("%S(%u)> if (false == AnimMontages.Contains(Key))"), __FUNCTION__, __LINE__);
 		return;
 	}
 
-	UAnimMontage* Montage = AnimMontages[_AniName];
+	UAnimMontage* Mon = AnimMontages[_Key];
 
-	if (nullptr == Montage)
+	if (nullptr == Mon)
 	{
-		UE_LOG(LogType, Fatal, TEXT("%S(%u)> if (nullptr == Montage)"), __FUNCTION__, __LINE__);
+		UE_LOG(LogType, Fatal, TEXT("%S(%u)> if (nullptr == Mon)"), __FUNCTION__, __LINE__);
 		return;
 	}
 
-	Montage_Play(Montage);
+	UAnimMontage* PrevMon = GetCurrentActiveMontage();
+
+	if (nullptr == PrevMon && nullptr != Mon)
+	{
+
+	}
+
+	if (PrevMon != Mon)
+	{
+		Montage_Play(Mon);
+	}
 }

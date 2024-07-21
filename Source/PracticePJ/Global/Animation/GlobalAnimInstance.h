@@ -15,14 +15,17 @@ class PRACTICEPJ_API UGlobalAnimInstance : public UAnimInstance
 	GENERATED_BODY()
 
 public:
-	void ChangeAnimation(const FString& _AniName);
+	template<typename EnumType>
+	void ChangeAnimation(EnumType _Key)
+	{
+		ChangeAnimation(static_cast<uint8>(_Key));
+	}
+
+	void ChangeAnimation(uint8 _Key);
 
 protected:
 
 private:
-	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	//uint8 AniKey;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	TMap<FString, class UAnimMontage*> AnimMontages;
+	TMap<uint8, class UAnimMontage*> AnimMontages = TMap<uint8, class UAnimMontage*>();
 };

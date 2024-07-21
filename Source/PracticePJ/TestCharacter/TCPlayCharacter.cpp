@@ -2,6 +2,7 @@
 
 
 #include "TestCharacter/TCPlayCharacter.h"
+#include "Global/Animation/GlobalAnimInstance.h"
 
 // Sets default values
 ATCPlayCharacter::ATCPlayCharacter()
@@ -16,6 +17,7 @@ void ATCPlayCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	AnimInst = Cast<UGlobalAnimInstance>(GetMesh()->GetAnimInstance());
 }
 
 // Called every frame

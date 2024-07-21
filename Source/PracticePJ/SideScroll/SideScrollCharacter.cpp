@@ -58,7 +58,7 @@ void ASideScrollCharacter::BeginPlay()
 	PlayerSpeed = PlayerData.PlayerSpeed;
 
 
-	GetAnimationContext()->ChangeAnimation(TEXT("Run"));
+	//GetAnimationContext()->ChangeAnimation(TEXT("Run"));
 }
 
 // Called every frame
@@ -156,7 +156,7 @@ void ASideScrollCharacter::ViewCharacterJump()
 {
 	if (true == IsGroundValue)
 	{
-		GetAnimationContext()->ChangeAnimation(TEXT("Jump"));
+		//GetAnimationContext()->ChangeAnimation(TEXT("Jump"));
 		IsJumpValue = true;
 		GravityPower = 0.0f;
 		JumpPower = PlayerData.JumpZVelocity;
