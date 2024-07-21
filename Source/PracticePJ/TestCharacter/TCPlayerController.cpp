@@ -4,6 +4,8 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Global/DataAssets/InputActionDatas.h"
+#include "Global/KKYEnum.h"
+#include "TCCharacter.h"
 
 ATCPlayerController::ATCPlayerController()
 {
@@ -21,7 +23,7 @@ ATCPlayerController::ATCPlayerController()
 
 void ATCPlayerController::MoveFront()
 {
-	//ChangeAnimation(ETCPlayerAnimation::Rifle_WalkForward);
+	ChangeAnimation(ETCPlayerAnimation::Rifle_WalkForward);
 
 	FVector Forward = GetPawn()->GetActorForwardVector();
 	GetPawn()->AddMovementInput(Forward);
@@ -59,4 +61,16 @@ void ATCPlayerController::SetupInputComponent()
 		EnhancedInputComponent->BindAction(InputData->Actions[2], ETriggerEvent::Triggered, this, &ATCPlayerController::MoveBack);
 		EnhancedInputComponent->BindAction(InputData->Actions[1], ETriggerEvent::Triggered, this, &ATCPlayerController::Rotating);
 	}
+}
+
+void ATCPlayerController::ChangeAnimation(ETCPlayerAnimation _Animation)
+{
+	ATCCharacter* Ch = GetPawn<ATCCharacter>();
+
+	if (nullptr == Ch)
+	{
+		return;
+	}
+
+	//Ch->ChangeAnimation(_Animation);
 }

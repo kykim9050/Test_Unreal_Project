@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "Global/KKYEnum.h"
 #include "TCPlayerController.generated.h"
 
 /**
@@ -19,6 +20,9 @@ public:
 	ATCPlayerController();
 
 public:
+	UFUNCTION(BlueprintCallable)
+	void ChangeAnimation(ETCPlayerAnimation _Animation);
+
 	UFUNCTION(BlueprintCallable)
 	void MoveFront();
 
