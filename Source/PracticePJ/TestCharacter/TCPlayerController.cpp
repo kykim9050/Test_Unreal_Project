@@ -31,9 +31,10 @@ void ATCPlayerController::MoveBack()
 	GetPawn()->AddMovementInput(Backward);
 }
 
-void ATCPlayerController::Rotating()
+void ATCPlayerController::Rotating(const FInputActionValue& Value)
 {
-	
+	FVector2D MouseXY = Value.Get<FVector2D>();
+	AddYawInput(MouseXY.X);
 }
 
 void ATCPlayerController::SetupInputComponent()

@@ -26,7 +26,7 @@ public:
 	void MoveBack();
 
 	UFUNCTION(BlueprintCallable)
-	void Rotating();
+	void Rotating(const FInputActionValue& Value);
 
 	UFUNCTION(BlueprintCallable)
 	void SetupInputComponent() override;
