@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -10,9 +10,15 @@
 UENUM(BlueprintType)
 enum class ETCPlayerAnimation : uint8
 {
-	Rifle_Idle			UMETA(DisplayName = "������ Idle"),
-	Rifle_WalkForward	UMETA(DisplayName = "������ ��� �� �ȱ�"),
-	Rifle_WalkBackward	UMETA(DisplayName = "������ ��� �ڷ� �ȱ�")
+	Rifle_Idle				UMETA(DisplayName = "라이플 들고 Idle"),
+	Rifle_WalkForward		UMETA(DisplayName = "라이플 들고 전방 걷기"),
+	Rifle_WalkForwardLeft	UMETA(DisplayName = "라이플 들고 전방 좌측 걷기"),
+	Rifle_WalkForwardRight	UMETA(DisplayName = "라이플 들고 전방 우측 걷기"),
+	Rifle_WalkBackward		UMETA(DisplayName = "라이플 들고 후방 걷기"),
+	Rifle_WalkBackwardLeft	UMETA(DisplayName = "라이플 들고 후방 좌측 걷기"),
+	Rifle_WalkBackwardRight	UMETA(DisplayName = "라이플 들고 후방 우측 걷기"),
+	Rifle_WalkLeft			UMETA(DisplayName = "라이플 들고 좌측 걷기"),
+	Rifle_WalkRight			UMETA(DisplayName = "라이플 들고 우측 걷기")
 };
 
 UENUM(BlueprintType)
