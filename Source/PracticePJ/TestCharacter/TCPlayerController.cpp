@@ -25,14 +25,21 @@ void ATCPlayerController::MoveFront()
 {
 	ChangeAnimation(ETCPlayerAnimation::Rifle_WalkForward);
 
-	FVector Forward = GetPawn()->GetActorForwardVector();
+	FVector Forward = GetPawn()->GetActorForwardVector() * 0.5f;
 	GetPawn()->AddMovementInput(Forward);
 }
 
 void ATCPlayerController::MoveBack()
 {
-	FVector Backward = GetPawn()->GetActorForwardVector() * (-1);
+	ChangeAnimation(ETCPlayerAnimation::Rifle_WalkBackward);
+
+	FVector Backward = GetPawn()->GetActorForwardVector() * (-0.3f);
 	GetPawn()->AddMovementInput(Backward);
+}
+
+void ATCPlayerController::MoveEnd()
+{
+	ChangeAnimation(ETCPlayerAnimation::Rifle_Idle);
 }
 
 void ATCPlayerController::Rotating(const FInputActionValue& Value)
@@ -58,7 +65,9 @@ void ATCPlayerController::SetupInputComponent()
 	if (nullptr != InputData->InputMapping)
 	{
 		EnhancedInputComponent->BindAction(InputData->Actions[0], ETriggerEvent::Triggered, this, &ATCPlayerController::MoveFront);
+		EnhancedInputComponent->BindAction(InputData->Actions[0], ETriggerEvent::Completed, this, &ATCPlayerController::MoveEnd);
 		EnhancedInputComponent->BindAction(InputData->Actions[2], ETriggerEvent::Triggered, this, &ATCPlayerController::MoveBack);
+		EnhancedInputComponent->BindAction(InputData->Actions[2], ETriggerEvent::Completed, this, &ATCPlayerController::MoveEnd);
 		EnhancedInputComponent->BindAction(InputData->Actions[1], ETriggerEvent::Triggered, this, &ATCPlayerController::Rotating);
 	}
 }

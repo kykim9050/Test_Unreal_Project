@@ -30,6 +30,9 @@ public:
 	void MoveBack();
 
 	UFUNCTION(BlueprintCallable)
+	void MoveEnd();
+
+	UFUNCTION(BlueprintCallable)
 	void Rotating(const FInputActionValue& Value);
 
 	UFUNCTION(BlueprintCallable)
