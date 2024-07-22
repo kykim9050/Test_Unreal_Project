@@ -45,6 +45,17 @@ void ATCPlayerController::MoveRight()
 	GetPawn()->AddMovementInput(Rightward);
 }
 
+void ATCPlayerController::MoveRightFront()
+{
+	ChangeAnimation(ETCPlayerAnimation::Rifle_WalkForwardRight);
+
+	FVector Forward = GetPawn()->GetActorForwardVector() * (0.5f);
+	FVector Rightward = GetPawn()->GetActorRightVector() * (0.5f);
+	FVector ResultVector = Forward + Rightward;
+
+	GetPawn()->AddMovementInput(ResultVector);
+}
+
 void ATCPlayerController::MoveLeft()
 {
 	ChangeAnimation(ETCPlayerAnimation::Rifle_WalkLeft);
@@ -89,6 +100,8 @@ void ATCPlayerController::SetupInputComponent()
 		EnhancedInputComponent->BindAction(InputData->Actions[3], ETriggerEvent::Completed, this, &ATCPlayerController::MoveEnd);
 		EnhancedInputComponent->BindAction(InputData->Actions[4], ETriggerEvent::Triggered, this, &ATCPlayerController::MoveLeft);
 		EnhancedInputComponent->BindAction(InputData->Actions[4], ETriggerEvent::Completed, this, &ATCPlayerController::MoveEnd);
+		EnhancedInputComponent->BindAction(InputData->Actions[5], ETriggerEvent::Triggered, this, &ATCPlayerController::MoveRightFront);
+		EnhancedInputComponent->BindAction(InputData->Actions[5], ETriggerEvent::Completed, this, &ATCPlayerController::MoveEnd);
 	}
 }
 
