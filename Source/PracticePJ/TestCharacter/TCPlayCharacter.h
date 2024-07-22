@@ -47,7 +47,7 @@ protected:
 
 private:	
 	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	uint8 AniValue = -1;
+	uint8 AniValue = 0;
 
 	// Replicated 빼면 어떻게 되려나? 해보쟈
 	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))

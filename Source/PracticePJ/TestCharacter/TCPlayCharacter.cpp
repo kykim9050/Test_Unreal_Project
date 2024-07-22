@@ -9,7 +9,6 @@ ATCPlayCharacter::ATCPlayCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 // Called when the game starts or when spawned
@@ -25,10 +24,10 @@ void ATCPlayCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//if (nullptr != AnimInst)
-	//{
-	//	AnimInst->ChangeAnimation(AniValue);
-	//}
+	if (nullptr != AnimInst)
+	{
+		AnimInst->ChangeAnimation(AniValue);
+	}
 }
 
 // Called to bind functionality to input
