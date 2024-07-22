@@ -19,6 +19,7 @@ public:
 	class UInputDatas* GetInputDataAsset();
 	class UStaticMesh* GetStaticMeshData(FName _Name);
 	TSubclassOf<UObject> GetGlobalObjectClass(FName _Name);
+	const struct FTCCharacterDataRow* GetTCCharacterData(FName _Name);
 
 protected:
 
@@ -38,6 +39,9 @@ private:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	UDataTable* GlobalObjectTable;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UDataTable* TCCharacterData = nullptr;
 
 	UKKYGameInstance();
 };
