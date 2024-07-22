@@ -19,7 +19,7 @@ public:
 	class UInputDatas* GetInputDataAsset();
 	class UStaticMesh* GetStaticMeshData(FName _Name);
 	TSubclassOf<UObject> GetGlobalObjectClass(FName _Name);
-	const struct FTCCharacterDataRow* GetTCCharacterData(FName _Name);
+	struct FTCCharacterDataRow* GetTCCharacterData(FName _Name);
 
 protected:
 

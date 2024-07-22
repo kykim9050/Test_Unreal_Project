@@ -7,6 +7,8 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Global/KKYEnum.h"
 #include "Global/Animation/GlobalAnimInstance.h"
+#include "Global/GlobalFunction.h"
+#include "Global/DataTable/TCCharacterDataRow.h"
 
 // Sets default values
 ATCCharacter::ATCCharacter()
@@ -33,12 +35,32 @@ void ATCCharacter::BeginPlay()
 	SpringArm->SetRelativeRotation(Quat);
 	SpringArm->SetRelativeLocation(FVector(0.0f, 0.0f, 100.0f));
 
-	for(TPair< ETCPlayerAnimation, class UAnimMontage*> Montage : AnimMontages)
+
+	UKKYGameInstance* Inst = UGlobalFunction::GetKKYGameInstance(GetWorld());
+
+	if (nullptr == Inst)
+	{
+		UE_LOG(LogType, Fatal, TEXT("%S(%u)> if (nullptr == Inst)"), __FUNCTION__, __LINE__);
+		return;
+	}
+
+	FName Name = FName(TEXT("Character1"));
+	FTCCharacterDataRow* Data = Inst->GetTCCharacterData(FName(Name));
+	AnimMontages = Data->GetAnimMontages();
+
+	if (true == AnimMontages.IsEmpty())
+	{
+		UE_LOG(LogType, Fatal, TEXT("%S(%u)> if (true == AnimMontages.IsEmpty())"), __FUNCTION__, __LINE__);
+		return;
+	}
+
+	for (TPair< ETCPlayerAnimation, class UAnimMontage*> Montage : AnimMontages)
 	{
 		GetGlobalAnimInstance()->PushAnimation(Montage.Key, Montage.Value);
 	}
 
 	GetGlobalAnimInstance()->ChangeAnimation(ETCPlayerAnimation::Rifle_Idle);
+
 }
 
 // Called every frame

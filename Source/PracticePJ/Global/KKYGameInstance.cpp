@@ -90,7 +90,7 @@ TSubclassOf<UObject> UKKYGameInstance::GetGlobalObjectClass(FName _Name)
 	return Data->Object;
 }
 
-const FTCCharacterDataRow* UKKYGameInstance::GetTCCharacterData(FName _Name)
+FTCCharacterDataRow* UKKYGameInstance::GetTCCharacterData(FName _Name)
 {
 	if (nullptr == TCCharacterData)
 	{
