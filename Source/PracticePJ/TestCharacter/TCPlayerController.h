@@ -38,8 +38,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void MoveLeft();
 
-	UFUNCTION(BlueprintCallable)
-	void MoveRightFront();
+	//UFUNCTION(BlueprintCallable)
+	//void MoveRightFront();
 
 	UFUNCTION(BlueprintCallable)
 	void Rotating(const FInputActionValue& Value);

@@ -10,7 +10,7 @@ public class PracticePJEditor : ModuleRules
 
 		PublicIncludePaths.Add(System.IO.Path.Combine(ModuleDirectory, ""));
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UnrealEd", "EnhancedInput", "PracticePJ", "UMGEditor", "UMG", "DesktopPlatform" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UnrealEd", "EnhancedInput", "PracticePJ", "UMGEditor", "UMG", "DesktopPlatform", "ScriptableEditorWidgets" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
