@@ -59,7 +59,7 @@ void ATCCharacter::BeginPlay()
 	{
 		GetGlobalAnimInstance()->PushAnimation(Montage.Key, Montage.Value);
 	}
-
+	
 	GetGlobalAnimInstance()->ChangeAnimation(ETCPlayerAnimation::Rifle_Idle);
 
 }

@@ -21,6 +21,7 @@ public:
 		return TestValue;
 	}
 
+	UFUNCTION(BlueprintCallable)
 	FORCEINLINE void AddTestValue()
 	{
 		++TestValue;
