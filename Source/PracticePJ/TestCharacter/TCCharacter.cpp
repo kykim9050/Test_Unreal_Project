@@ -70,9 +70,10 @@ void ATCCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	AMainGameState* TCGameState = Cast<AMainGameState>(GetWorld()->GetGameState());
-	int a = 0;
 	
-	//UGlobalFunction::DebugTextPrint(GetWorld(), )
+	int Value = TCGameState->GetTestValue();
+	FString Info = FString::FromInt(Value);
+	UGlobalFunction::DebugTextPrint(GetWorld(), FString(TEXT("Test Value : ") + Info));
 }
 
 // Called to bind functionality to input
