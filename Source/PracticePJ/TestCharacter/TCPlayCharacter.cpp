@@ -3,6 +3,7 @@
 
 #include "TestCharacter/TCPlayCharacter.h"
 #include "Global/Animation/GlobalAnimInstance.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ATCPlayCharacter::ATCPlayCharacter()
@@ -15,6 +16,8 @@ ATCPlayCharacter::ATCPlayCharacter()
 void ATCPlayCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	ConfirmActiveThings();
 	
 	AnimInst = Cast<UGlobalAnimInstance>(GetMesh()->GetAnimInstance());
 }
@@ -23,6 +26,8 @@ void ATCPlayCharacter::BeginPlay()
 void ATCPlayCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	ConfirmActiveThings();
 
 	if (nullptr != AnimInst)
 	{
@@ -47,4 +52,17 @@ void ATCPlayCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 void ATCPlayCharacter::ChangeAnimation_Implementation(uint8 _Type)
 {
 	AniValue = _Type;
+}
+
+void ATCPlayCharacter::ConfirmActiveThings()
+{
+	AGameModeBase* GameModeBase = GetWorld()->GetAuthGameMode();
+	AGameStateBase* GameStateBase = GetWorld()->GetGameState();
+	APlayerState* PState = GetPlayerState();
+	AController* PController = GetController();
+
+	bool IsControll = IsControlled();
+	bool IsPlayerControll = IsPlayerControlled();
+	ENetRole Net = GetLocalRole();
+	ENetRole RemotRole = GetRemoteRole();
 }

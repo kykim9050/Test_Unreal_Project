@@ -9,6 +9,7 @@
 #include "Global/Animation/GlobalAnimInstance.h"
 #include "Global/GlobalFunction.h"
 #include "Global/DataTable/TCCharacterDataRow.h"
+#include "TestCharacter/MainGameState.h"
 
 // Sets default values
 ATCCharacter::ATCCharacter()
@@ -68,6 +69,10 @@ void ATCCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	AMainGameState* TCGameState = Cast<AMainGameState>(GetWorld()->GetGameState());
+	int a = 0;
+	
+	//UGlobalFunction::DebugTextPrint(GetWorld(), )
 }
 
 // Called to bind functionality to input
