@@ -11,6 +11,7 @@
  * 
  */
 class AMainGameState;
+class UKKYGameInstance;
 UCLASS()
 class PRACTICEPJ_API ATCGameMode : public AGameMode
 {
@@ -26,6 +27,9 @@ protected:
 private:
 	UPROPERTY()
 	AMainGameState* MainGameState = nullptr;
+
+	UPROPERTY()
+	UKKYGameInstance* Inst = nullptr;
 
 	UPROPERTY()
 	EGameStage CurStage = EGameStage::Start;

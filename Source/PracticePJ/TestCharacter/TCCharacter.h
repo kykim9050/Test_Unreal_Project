@@ -10,6 +10,7 @@
 class USpringArmComponent;
 class UCameraComponent;
 class UAnimMontage;
+class UKKYGameInstance;
 UCLASS()
 class PRACTICEPJ_API ATCCharacter : public ATCPlayCharacter
 {
@@ -42,4 +43,7 @@ private:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	TMap<ETCPlayerAnimation, UAnimMontage*> AnimMontages = TMap<ETCPlayerAnimation, UAnimMontage*>();
+
+	UPROPERTY()
+	UKKYGameInstance* Inst = nullptr;
 };

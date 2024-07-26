@@ -37,7 +37,7 @@ void ATCCharacter::BeginPlay()
 	SpringArm->SetRelativeLocation(FVector(0.0f, 0.0f, 100.0f));
 
 
-	UKKYGameInstance* Inst = UGlobalFunction::GetKKYGameInstance(GetWorld());
+	Inst = UGlobalFunction::GetKKYGameInstance(GetWorld());
 
 	if (nullptr == Inst)
 	{
@@ -69,9 +69,7 @@ void ATCCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	AMainGameState* TCGameState = Cast<AMainGameState>(GetWorld()->GetGameState());
-	
-	int Value = TCGameState->GetTestValue();
+	int Value = static_cast<int>(Inst->GetMainGameStage());
 	FString Info = FString::FromInt(Value);
 	UGlobalFunction::DebugTextPrint(GetWorld(), FString(TEXT("Test Value : ") + Info));
 }

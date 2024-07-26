@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "KKYEnum.h"
 #include "KKYGameInstance.generated.h"
 
 /**
@@ -20,6 +21,16 @@ public:
 	class UStaticMesh* GetStaticMeshData(FName _Name);
 	TSubclassOf<UObject> GetGlobalObjectClass(FName _Name);
 	struct FTCCharacterDataRow* GetTCCharacterData(FName _Name);
+
+	FORCEINLINE EGameStage GetMainGameStage() const
+	{
+		return MainGameStage;
+	}
+
+	FORCEINLINE void SetMainGameStage(EGameStage _StageValue)
+	{
+		MainGameStage = _StageValue;
+	}
 
 protected:
 
@@ -42,6 +53,9 @@ private:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	UDataTable* TCCharacterData = nullptr;
+
+	UPROPERTY()
+	EGameStage MainGameStage = EGameStage::Start;
 
 	UKKYGameInstance();
 };
