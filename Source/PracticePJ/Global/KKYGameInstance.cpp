@@ -7,11 +7,19 @@
 #include "Global/DataTable/MeshDataRow.h"
 #include "Global/DataTable/GlobalObjectRow.h"
 #include "Global/DataTable/TCCharacterDataRow.h"
+#include "Net/UnrealNetwork.h"
 
 
 UKKYGameInstance::UKKYGameInstance()
 {
 
+}
+
+void UKKYGameInstance::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(UKKYGameInstance, MainGameStage);
 }
 
 const struct FSideScrollGameSettingRow* UKKYGameInstance::GetSideScrollData()

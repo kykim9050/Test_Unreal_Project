@@ -33,7 +33,7 @@ public:
 	}
 
 protected:
-
+	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowprivateAccess = "true"))
@@ -54,7 +54,7 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	UDataTable* TCCharacterData = nullptr;
 
-	UPROPERTY()
+	UPROPERTY(Replicated)
 	EGameStage MainGameStage = EGameStage::Start;
 
 	UKKYGameInstance();
