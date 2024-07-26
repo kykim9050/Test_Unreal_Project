@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameState.h"
+#include "Global/KKYEnum.h"
 #include "MainGameState.generated.h"
 
 /**
@@ -38,11 +39,29 @@ public:
 		IsStageChange = _Value;
 	}
 
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE EGameStage GetCurStage() const
+	{
+		return CurStage;
+	}
+
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE void SetCurStage(EGameStage _GameStage)
+	{
+		CurStage = _GameStage;
+	}
+
 protected:
 
 private:
 	UPROPERTY()
 	int TestValue = 0;
+
+	UPROPERTY()
+	bool IsSample1Get = false;
+
+	UPROPERTY()
+	EGameStage CurStage = EGameStage::Start;
 
 	UPROPERTY()
 	bool IsStageChange = false;

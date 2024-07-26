@@ -16,9 +16,12 @@ void ATCGameMode::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	if (true == MainGameState->GetIsStageChange())
+	EGameStage StageValue = MainGameState->GetCurStage();
+
+	if (CurStage != StageValue)
 	{
-		int a = 0;
-		MainGameState->SetIsStageChange(false);
+		CurStage = StageValue;
+
+		// 메인 게임 인스턴스에 EGameStage 값 변경 (해당 값은 리플리케이트 되어있어야 함)
 	}
 }

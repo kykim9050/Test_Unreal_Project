@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
+#include "Global/KKYEnum.h"
 #include "TCGameMode.generated.h"
 
 /**
@@ -25,4 +26,7 @@ protected:
 private:
 	UPROPERTY()
 	AMainGameState* MainGameState = nullptr;
+
+	UPROPERTY()
+	EGameStage CurStage = EGameStage::Start;
 };

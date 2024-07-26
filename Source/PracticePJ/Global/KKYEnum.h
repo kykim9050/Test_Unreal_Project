@@ -28,6 +28,12 @@ enum class ESideScrollAni : uint8
 	Attack,
 };
 
+UENUM(BlueprintType)
+enum class EGameStage : uint8
+{
+	Start		UMETA(DisplayName = "Start"),
+	NextStage	UMETA(DisplayName = "NextStage")
+};
 
 /**
  * 
