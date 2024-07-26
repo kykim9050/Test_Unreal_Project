@@ -9,6 +9,7 @@
 /**
  * 
  */
+class AMainGameState;
 UCLASS()
 class PRACTICEPJ_API ATCGameMode : public AGameMode
 {
@@ -17,8 +18,11 @@ class PRACTICEPJ_API ATCGameMode : public AGameMode
 public:
 
 protected:
+	void StartPlay() override;
+
 	void Tick(float DeltaSeconds) override;
 
 private:
-
+	UPROPERTY()
+	AMainGameState* MainGameState = nullptr;
 };
