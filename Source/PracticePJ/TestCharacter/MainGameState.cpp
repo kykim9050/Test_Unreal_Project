@@ -3,3 +3,19 @@
 
 #include "TestCharacter/MainGameState.h"
 
+
+void AMainGameState::AddItemNum()
+{
+	if (MaxItemNum < ItemNum)
+	{
+		return;
+	}
+
+	if (MaxItemNum == ItemNum)
+	{
+		CurStage = EGameStage::NextStage;
+		return;
+	}
+
+	++ItemNum;
+}

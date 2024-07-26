@@ -51,6 +51,9 @@ public:
 		CurStage = _GameStage;
 	}
 
+	UFUNCTION(BlueprintCallable)
+	void AddItemNum();
+
 protected:
 
 private:
@@ -58,7 +61,10 @@ private:
 	int TestValue = 0;
 
 	UPROPERTY()
-	bool IsSample1Get = false;
+	int ItemNum = 0;
+
+	UPROPERTY()
+	int MaxItemNum = 2;
 
 	UPROPERTY()
 	EGameStage CurStage = EGameStage::Start;
