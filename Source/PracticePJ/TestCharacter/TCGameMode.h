@@ -14,4 +14,11 @@ class PRACTICEPJ_API ATCGameMode : public AGameMode
 {
 	GENERATED_BODY()
 	
+public:
+
+protected:
+	void Tick(float DeltaSeconds) override;
+
+private:
+
 };

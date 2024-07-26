@@ -3,3 +3,9 @@
 
 #include "TestCharacter/TCGameMode.h"
 
+void ATCGameMode::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+
+	
+}

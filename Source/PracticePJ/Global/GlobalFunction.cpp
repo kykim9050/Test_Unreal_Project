@@ -4,6 +4,7 @@
 #include "Global/GlobalFunction.h"
 #include "Kismet/GameplayStatics.h"
 #include "Global/GlobalHUD.h"
+#include "TestCharacter/MainGameState.h"
 
 UKKYGameInstance* UGlobalFunction::GetKKYGameInstance(const UWorld* WorldContextObject)
 {
@@ -16,6 +17,19 @@ UKKYGameInstance* UGlobalFunction::GetKKYGameInstance(const UWorld* WorldContext
 	}
 
 	return Inst;
+}
+
+AMainGameState* UGlobalFunction::GetMainGameState(const UWorld* WorldContextObject)
+{
+	AMainGameState* MainGameState = WorldContextObject->GetGameState<AMainGameState>();
+
+	if (false == MainGameState->IsValidLowLevel())
+	{
+		UE_LOG(LogType, Fatal, TEXT("%S(%u)> if (false == MainGameState->IsValidLowLevel())"), __FUNCTION__, __LINE__);
+		return nullptr;
+	}
+
+	return MainGameState;
 }
 
 #if WITH_EDITOR

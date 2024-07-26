@@ -10,6 +10,7 @@
 /**
  * 
  */
+class AMainGameState;
 UCLASS()
 class PRACTICEPJ_API UGlobalFunction : public UBlueprintFunctionLibrary
 {
@@ -22,6 +23,7 @@ public:
 
 	static UKKYGameInstance* GetKKYGameInstance(const UWorld* WorldContextObject);
 
+	static AMainGameState* GetMainGameState(const UWorld* WorldContextObject);
 
 protected:
 
