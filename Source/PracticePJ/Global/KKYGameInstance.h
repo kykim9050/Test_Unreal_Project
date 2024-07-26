@@ -27,10 +27,12 @@ public:
 		return MainGameStage;
 	}
 
-	FORCEINLINE void SetMainGameStage(EGameStage _StageValue)
-	{
-		MainGameStage = _StageValue;
-	}
+	UFUNCTION()
+	void SetMainGameStage(EGameStage _StageValue);
+
+	UPROPERTY(Replicated)
+	int TestValue = 0;
+
 
 protected:
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
@@ -56,6 +58,7 @@ private:
 
 	UPROPERTY(Replicated)
 	EGameStage MainGameStage = EGameStage::Start;
+
 
 	UKKYGameInstance();
 };

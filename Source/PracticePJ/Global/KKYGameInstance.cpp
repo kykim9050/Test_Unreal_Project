@@ -19,7 +19,7 @@ void UKKYGameInstance::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(UKKYGameInstance, MainGameStage);
+	DOREPLIFETIME(UKKYGameInstance, MainGameStage); 
 }
 
 const struct FSideScrollGameSettingRow* UKKYGameInstance::GetSideScrollData()
@@ -114,4 +114,9 @@ FTCCharacterDataRow* UKKYGameInstance::GetTCCharacterData(FName _Name)
 	}
 
 	return Data;
+}
+
+void UKKYGameInstance::SetMainGameStage(EGameStage _StageValue)
+{
+	MainGameStage = _StageValue;
 }

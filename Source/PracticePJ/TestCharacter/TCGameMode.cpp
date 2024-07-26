@@ -26,5 +26,6 @@ void ATCGameMode::Tick(float DeltaSeconds)
 		
 		// 메인 게임 인스턴스에 EGameStage 값 변경 (해당 값은 리플리케이트 되어있어야 함)
 		Inst->SetMainGameStage(CurStage);
+		Inst->TestValue = 100;
 	}
 }
