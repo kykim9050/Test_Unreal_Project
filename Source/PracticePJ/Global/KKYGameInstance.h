@@ -22,16 +22,11 @@ public:
 	TSubclassOf<UObject> GetGlobalObjectClass(FName _Name);
 	struct FTCCharacterDataRow* GetTCCharacterData(FName _Name);
 
-	FORCEINLINE EGameStage GetMainGameStage() const
-	{
-		return MainGameStage;
-	}
+	EGameStage GetMainGameStage() const;
 
-	UFUNCTION()
+	UFUNCTION(Reliable, Server)
 	void SetMainGameStage(EGameStage _StageValue);
-
-	UPROPERTY(Replicated)
-	int TestValue = 0;
+	void SetMainGameStage_Implementation(EGameStage _StageValue);
 
 
 protected:

@@ -116,7 +116,12 @@ FTCCharacterDataRow* UKKYGameInstance::GetTCCharacterData(FName _Name)
 	return Data;
 }
 
-void UKKYGameInstance::SetMainGameStage(EGameStage _StageValue)
+void UKKYGameInstance::SetMainGameStage_Implementation(EGameStage _StageValue)
 {
 	MainGameStage = _StageValue;
+}
+
+EGameStage UKKYGameInstance::GetMainGameStage() const
+{
+	return MainGameStage;
 }
