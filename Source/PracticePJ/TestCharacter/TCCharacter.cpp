@@ -69,10 +69,23 @@ void ATCCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	EGameStage StageVal = Inst->GetMainGameStage();
-	int Value = static_cast<int>(StageVal);
+	EGameStage GameInstanceStageVal = Inst->GetMainGameStage();
+	int Value = static_cast<int>(GameInstanceStageVal);
 	FString Info = FString::FromInt(Value);
-	UGlobalFunction::DebugTextPrint(GetWorld(), FString(TEXT("Test Value1 : ") + Info));
+	UGlobalFunction::DebugTextPrint(GetWorld(), FString(TEXT("GameInstance Value : ") + Info));
+
+	AMainGameState* PGameState = Cast<AMainGameState>(GetWorld()->GetGameState());
+	if (nullptr == PGameState)
+	{
+		return;
+	}
+
+	EGameStage GameStateStageVal = PGameState->GetCurStage();
+	int Value2 = static_cast<int>(GameStateStageVal);
+	FString Info2 = FString::FromInt(Value2);
+	UGlobalFunction::DebugTextPrint(GetWorld(), FString(TEXT("GameState Value : ") + Info2));
+
+	
 }
 
 // Called to bind functionality to input
