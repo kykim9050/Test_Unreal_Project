@@ -24,7 +24,7 @@ public:
 
 	EGameStage GetMainGameStage() const;
 
-	UFUNCTION(Reliable, Server)
+	UFUNCTION(Reliable, NetMulticast)
 	void SetMainGameStage(EGameStage _StageValue);
 	void SetMainGameStage_Implementation(EGameStage _StageValue);
 
